@@ -24,4 +24,3 @@ ligneh2 = canvas.create_line(100, 1100, 1100, 1100)
 lignev1 = canvas.create_line(100, 100, 100, 1100)
 lignev2 = canvas.create_line(1100, 100, 1100, 1100)
 root.mainloop()
-	
