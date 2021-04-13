@@ -16,7 +16,7 @@ x1b1=0
 x2b1=0
 y1b1=0
 y2b1=0
-"""""""
+""""""
 x1b2=0
 x2b2=0
 y1b2=0
@@ -74,23 +74,50 @@ case9_libre=True
 def ClicCase(event):
     #print('coordonnées', event.x, event.y)
     if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75:
-        print('case1')
+        #print('case1')
+        canvas.coords(pion_selectionne, 25, 25, 75, 75)
+        canvas.update()
+        selectionner=0
     elif event.x>=375 and event.x<=425 and event.y>=25 and event.y<=75:
-        print('case2')
+        #print('case2')
+        canvas.coords(pion_selectionne, 375, 25, 425, 75)
+        canvas.update()
+        selectionner=0
     elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75:
-        print('case3')
+        #print('case3')
+        canvas.coords(pion_selectionne, 725, 25, 775, 75)
+        canvas.update()
+        selectionner=0
     elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425:
-        print('case4')
+        #print('case4')
+        canvas.coords(pion_selectionne, 25, 375, 75, 425)
+        canvas.update()
+        selectionner=0
     elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425:
-        print('case5')
+        #print('case5')
+        canvas.coords(pion_selectionne, 375, 375, 425, 425)
+        canvas.update()
+        selectionner=0
     elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425:
-        print('case6')
+        #print('case6')
+        canvas.coords(pion_selectionne, 725, 375, 775, 425)
+        canvas.update()
+        selectionner=0
     elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775:
-        print('case7')
+        #print('case7')
+        canvas.coords(pion_selectionne, 25, 725, 75, 775)
+        canvas.update()
+        selectionner=0
     elif event.x>=375 and event.x<=425 and event.y>=725 and event.y<=775:
-        print('case8')
+        #print('case8')
+        canvas.coords(pion_selectionne, 375, 725, 425, 775)
+        canvas.update()
+        selectionner=0
     elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775:
-        print('case9')
+        #print('case9')
+        canvas.coords(pion_selectionne, 725, 725, 775, 775)
+        canvas.update()
+        selectionner=0
 
 root = tk.Tk()
 root.title("Jeu du Tapatan")
@@ -107,16 +134,22 @@ ligneh2 = canvas.create_line(50, 750, 750, 750)
 lignev1 = canvas.create_line(50, 50, 50, 750)
 lignev2 = canvas.create_line(750, 50, 750, 750)
 
+
+"""
 def _create_circle(x, y, x2, y2, **kwargs):
     return canvas.create_oval(x, y, x2, y2, **kwargs)
 tk.Canvas.create_circle = _create_circle
-
+"""
+pion_test= canvas.create_rectangle(25, 25, 75, 75, fill="blue", width=2)
+pion_selectionne=pion_test
+"""
 pion_b_1= _create_circle(x1b1, x2b1, y1b1, y2b2, fill="blue", width=2)
 pion_b_2= _create_circle(x1b2, x1b2, x1b2, x1b2, fill="blue", width=2)
 pion_b_3= _create_circle(x1b3, x1b3, x1b3, x1b3, fill="blue", width=2)
 pion_r_1= _create_circle(x1r1, x1r1, x1r1, x1r1, fill="red", width=2)
 pion_r_2= _create_circle(x1r2, x1r2, x1r2, x1r2, fill="red", width=2)
 pion_r_3= _create_circle(x1r3, x1r3, x1r3, x1r3, fill="red", width=2)
+"""
 
 
 
