@@ -108,7 +108,6 @@ def positionnement(a, z, e, r):
                             pion_b_3= canvas.create_rectangle(x1b3, x2b3, y1b3, y2b3, fill="blue", width=2)
                             nb_placements_bleu+=1
                             tourdejouer=0
-                        nb_tours+=1
                     elif tourdejouer==0:
                         if nb_tours<=2:
                             x1r1=a
@@ -134,7 +133,6 @@ def positionnement(a, z, e, r):
                             pion_r_3= canvas.create_rectangle(x1r3, x2r3, y1r3, y2r3, fill="red", width=2)
                             nb_placements_rouge+=1
                             tourdejouer=1
-                        nb_tours+=1
 
 
 
@@ -147,9 +145,7 @@ def ClicCase(event):
     global nb_placements_rouge
     global nb_tours
     #print('premiere valeur de nb_tours est', nb_tours)
-    for n in range(1, 6):
-        #nb_tours=n
-        if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75:
+    if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75:
             #print('case1')
             print('nb_tours avant vaut', nb_tours)
             positionnement(25,25,75,75)
@@ -157,7 +153,8 @@ def ClicCase(event):
             print('nb_placements_rouge vaut', nb_placements_rouge)
             print('nb_tours après vaut', nb_tours)
             print('tourdejouer vaut', tourdejouer)
-        elif event.x>=375 and event.x<=425 and event.y>=25 and event.y<=75:
+            nb_tours+=1
+    elif event.x>=375 and event.x<=425 and event.y>=25 and event.y<=75:
             #print('case2')
             print('nb_tours avant vaut', nb_tours)
             positionnement(375,25,425,75)
@@ -165,7 +162,8 @@ def ClicCase(event):
             print('nb_placements_rouge vaut', nb_placements_rouge)
             print('nb_tours après vaut', nb_tours)
             print('tourdejouer vaut', tourdejouer)
-        elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75:
+            nb_tours+=1
+    elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75:
             #print('case3')
             print('nb_tours avant vaut', nb_tours)
             positionnement(725,25,775,75)
@@ -173,7 +171,8 @@ def ClicCase(event):
             print('nb_placements_rouge vaut', nb_placements_rouge)
             print('nb_tours après vaut', nb_tours)
             print('tourdejouer vaut', tourdejouer)
-        elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425:
+            nb_tours+=1
+    elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425:
             #print('case4')
             print('nb_tours avant vaut', nb_tours)
             positionnement(25,375,75,425)
@@ -181,7 +180,8 @@ def ClicCase(event):
             print('nb_placements_rouge vaut', nb_placements_rouge)
             print('nb_tours après vaut', nb_tours)
             print('tourdejouer vaut', tourdejouer)
-        elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425:
+            nb_tours+=1
+    elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425:
             #print('case5')
             print('nb_tours avant vaut', nb_tours)
             positionnement(375,375,425,425)
@@ -189,7 +189,8 @@ def ClicCase(event):
             print('nb_placements_rouge vaut', nb_placements_rouge)
             print('nb_tours après vaut', nb_tours)
             print('tourdejouer vaut', tourdejouer)
-        elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425:
+            nb_tours+=1
+    elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425:
             #print('case6')
             print('nb_tours avant vaut', nb_tours)
             positionnement(725,375,775,425)
@@ -197,7 +198,8 @@ def ClicCase(event):
             print('nb_placements_rouge vaut', nb_placements_rouge)
             print('nb_tours après vaut', nb_tours)
             print('tourdejouer vaut', tourdejouer)
-        elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775:
+            nb_tours+=1
+    elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775:
             #print('case7')
             print('nb_tours avant vaut', nb_tours)
             positionnement(25,725,75,775)
@@ -205,7 +207,8 @@ def ClicCase(event):
             print('nb_placements_rouge vaut', nb_placements_rouge)
             print('nb_tours après vaut', nb_tours)
             print('tourdejouer vaut', tourdejouer)
-        elif event.x>=375 and event.x<=425 and event.y>=725 and event.y<=775:
+            nb_tours+=1
+    elif event.x>=375 and event.x<=425 and event.y>=725 and event.y<=775:
             #print('case8')
             print('nb_tours avant vaut', nb_tours)
             positionnement(375,725,425,775)
@@ -213,7 +216,8 @@ def ClicCase(event):
             print('nb_placements_rouge vaut', nb_placements_rouge)
             print('nb_tours après vaut', nb_tours)
             print('tourdejouer vaut', tourdejouer)
-        elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775:
+            nb_tours+=1
+    elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775:
             #print('case9')
             print('nb_tours avant vaut', nb_tours)
             positionnement(725,725,775,775)
@@ -221,6 +225,7 @@ def ClicCase(event):
             print('nb_placements_rouge vaut', nb_placements_rouge)
             print('nb_tours après vaut', nb_tours)
             print('tourdejouer vaut', tourdejouer)
+            nb_tours+=1
         
 
         
