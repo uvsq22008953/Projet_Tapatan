@@ -134,101 +134,47 @@ def positionnement(a, z, e, r):
                             nb_placements_rouge+=1
                             tourdejouer=1
 
-#dxgufx
-
-
-
 def ClicCase(event):
-    #print('coordonnées', event.x, event.y)
     global tourdejouer
     global nb_placements_bleu
     global nb_placements_rouge
     global nb_tours
-    #print('premiere valeur de nb_tours est', nb_tours)
     if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75:
-            #print('case1')
-            print('nb_tours avant vaut', nb_tours)
+            #case1
             positionnement(25,25,75,75)
-            print('nb_placements_bleu vaut', nb_placements_bleu)
-            print('nb_placements_rouge vaut', nb_placements_rouge)
-            print('nb_tours après vaut', nb_tours)
-            print('tourdejouer vaut', tourdejouer)
             nb_tours+=1
     elif event.x>=375 and event.x<=425 and event.y>=25 and event.y<=75:
-            #print('case2')
-            print('nb_tours avant vaut', nb_tours)
+            #case2
             positionnement(375,25,425,75)
-            print('nb_placements_bleu vaut', nb_placements_bleu)
-            print('nb_placements_rouge vaut', nb_placements_rouge)
-            print('nb_tours après vaut', nb_tours)
-            print('tourdejouer vaut', tourdejouer)
             nb_tours+=1
     elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75:
-            #print('case3')
-            print('nb_tours avant vaut', nb_tours)
+            #case3
             positionnement(725,25,775,75)
-            print('nb_placements_bleu vaut', nb_placements_bleu)
-            print('nb_placements_rouge vaut', nb_placements_rouge)
-            print('nb_tours après vaut', nb_tours)
-            print('tourdejouer vaut', tourdejouer)
             nb_tours+=1
     elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425:
-            #print('case4')
-            print('nb_tours avant vaut', nb_tours)
+            #case4
             positionnement(25,375,75,425)
-            print('nb_placements_bleu vaut', nb_placements_bleu)
-            print('nb_placements_rouge vaut', nb_placements_rouge)
-            print('nb_tours après vaut', nb_tours)
-            print('tourdejouer vaut', tourdejouer)
             nb_tours+=1
     elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425:
-            #print('case5')
-            print('nb_tours avant vaut', nb_tours)
+            #case5
             positionnement(375,375,425,425)
-            print('nb_placements_bleu vaut', nb_placements_bleu)
-            print('nb_placements_rouge vaut', nb_placements_rouge)
-            print('nb_tours après vaut', nb_tours)
-            print('tourdejouer vaut', tourdejouer)
             nb_tours+=1
     elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425:
-            #print('case6')
-            print('nb_tours avant vaut', nb_tours)
+            #case6
             positionnement(725,375,775,425)
-            print('nb_placements_bleu vaut', nb_placements_bleu)
-            print('nb_placements_rouge vaut', nb_placements_rouge)
-            print('nb_tours après vaut', nb_tours)
-            print('tourdejouer vaut', tourdejouer)
             nb_tours+=1
     elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775:
-            #print('case7')
-            print('nb_tours avant vaut', nb_tours)
+            #case7
             positionnement(25,725,75,775)
-            print('nb_placements_bleu vaut', nb_placements_bleu)
-            print('nb_placements_rouge vaut', nb_placements_rouge)
-            print('nb_tours après vaut', nb_tours)
-            print('tourdejouer vaut', tourdejouer)
             nb_tours+=1
     elif event.x>=375 and event.x<=425 and event.y>=725 and event.y<=775:
-            #print('case8')
-            print('nb_tours avant vaut', nb_tours)
+            #case8
             positionnement(375,725,425,775)
-            print('nb_placements_bleu vaut', nb_placements_bleu)
-            print('nb_placements_rouge vaut', nb_placements_rouge)
-            print('nb_tours après vaut', nb_tours)
-            print('tourdejouer vaut', tourdejouer)
             nb_tours+=1
     elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775:
-            #print('case9')
-            print('nb_tours avant vaut', nb_tours)
+            #case9
             positionnement(725,725,775,775)
-            print('nb_placements_bleu vaut', nb_placements_bleu)
-            print('nb_placements_rouge vaut', nb_placements_rouge)
-            print('nb_tours après vaut', nb_tours)
-            print('tourdejouer vaut', tourdejouer)
-            nb_tours+=1
-        
-
-        
+            nb_tours+=1 
 
 root = tk.Tk()
 root.title("Jeu du Tapatan")
@@ -244,26 +190,5 @@ ligneh1 = canvas.create_line(50, 50, 750, 50)
 ligneh2 = canvas.create_line(50, 750, 750, 750)
 lignev1 = canvas.create_line(50, 50, 50, 750)
 lignev2 = canvas.create_line(750, 50, 750, 750)
-
-
-"""
-def _create_circle(x, y, x2, y2, **kwargs):
-    return canvas.create_oval(x, y, x2, y2, **kwargs)
-tk.Canvas.create_circle = _create_circle
-
-pion_test= canvas.create_rectangle(25, 25, 75, 75, fill="blue", width=2)
-pion_selectionne=pion_test
-
-pion_b_1= _create_circle(x1b1, x2b1, y1b1, y2b2, fill="blue", width=2)
-pion_b_2= _create_circle(x1b2, x1b2, x1b2, x1b2, fill="blue", width=2)
-pion_b_3= _create_circle(x1b3, x1b3, x1b3, x1b3, fill="blue", width=2)
-pion_r_1= _create_circle(x1r1, x1r1, x1r1, x1r1, fill="red", width=2)
-pion_r_2= _create_circle(x1r2, x1r2, x1r2, x1r2, fill="red", width=2)
-pion_r_3= _create_circle(x1r3, x1r3, x1r3, x1r3, fill="red", width=2)
-"""
-
-
-
-
 
 root.mainloop()
