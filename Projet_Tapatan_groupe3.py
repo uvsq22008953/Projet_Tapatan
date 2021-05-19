@@ -175,7 +175,7 @@ def ClicCase(event):
             #case9
             positionnement(725,725,775,775)
             nb_tours+=1 
-
+#ghg
 root = tk.Tk()
 root.title("Jeu du Tapatan")
 canvas = tk.Canvas(root, width=800, height=800, borderwidth=0, highlightthickness=0, bg="grey")
