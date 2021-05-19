@@ -134,7 +134,7 @@ def positionnement(a, z, e, r):
                             nb_placements_rouge+=1
                             tourdejouer=1
 
-#kfgn
+
 
 
 def ClicCase(event):
@@ -227,7 +227,7 @@ def ClicCase(event):
             nb_tours+=1
         
 
-        
+#dfgnbx      
 
 root = tk.Tk()
 root.title("Jeu du Tapatan")
@@ -249,8 +249,15 @@ lignev2 = canvas.create_line(750, 50, 750, 750)
 def _create_circle(x, y, x2, y2, **kwargs):
     return canvas.create_oval(x, y, x2, y2, **kwargs)
 tk.Canvas.create_circle = _create_circle
+<<<<<<< HEAD
 pion_test= canvas.create_rectangle(25, 25, 75, 75, fill="blue", width=2)
 pion_selectionne=pion_test
+=======
+
+pion_test= canvas.create_rectangle(25, 25, 75, 75, fill="blue", width=2)
+pion_selectionne=pion_test
+
+>>>>>>> dc06f497cb34445bd3b18c1bb1f83e1c20fe6094
 pion_b_1= _create_circle(x1b1, x2b1, y1b1, y2b2, fill="blue", width=2)
 pion_b_2= _create_circle(x1b2, x1b2, x1b2, x1b2, fill="blue", width=2)
 pion_b_3= _create_circle(x1b3, x1b3, x1b3, x1b3, fill="blue", width=2)
