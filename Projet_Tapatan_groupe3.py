@@ -134,7 +134,7 @@ def positionnement(a, z, e, r):
                             nb_placements_rouge+=1
                             tourdejouer=1
 
-#dxgufxighi
+#dxgufx
 
 
 
