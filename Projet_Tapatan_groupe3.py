@@ -276,7 +276,6 @@ def ClicCase(event):
                 nb_tours+=1
                 case5_couleure=1
                 case5_libre=False
-                print(case5_couleure)
             else:
                 positionnement(375,375,425,425)
                 nb_tours+=1
@@ -356,10 +355,7 @@ def ClicCase(event):
             else:
                 nb_tours=nb_tours+2
         elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425:
-            print(case5_couleure)
-            print(tourdejouer)
             if case5_libre==False and case5_couleure==tourdejouer:
-                print(522)
                 verification5(375,375,425,425)
                 nb_tours+=1
             else:
