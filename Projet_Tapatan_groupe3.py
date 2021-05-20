@@ -157,18 +157,21 @@ def positionnement(a, z, e, r):
                             y1b1=e
                             y2b1=r
                             pion_b_1= canvas.create_rectangle(x1b1, x2b1, y1b1, y2b1, fill="blue", width=2)
+                            tourdejouer=0
                         elif pionb2==1:
                             x1b2=a
                             x2b2=z
                             y1b2=e
                             y2b2=r
                             pion_b_2= canvas.create_rectangle(x1b2, x2b2, y1b2, y2b2, fill="blue", width=2)
+                            tourdejouer=0
                         elif pionb3==1:
                             x1b3=a
                             x2b3=z
                             y1b3=e
                             y2b3=r
                             pion_b_3= canvas.create_rectangle(x1b3, x2b3, y1b3, y2b3, fill="blue", width=2)
+                            tourdejouer=0
                     elif tourdejouer==0:
                         if pionr1==1:
                             x1r1=a
@@ -176,18 +179,21 @@ def positionnement(a, z, e, r):
                             y1r1=e
                             y2r1=r
                             pion_r_1= canvas.create_rectangle(x1r1, x2r1, y1r1, y2r1, fill="red", width=2)
+                            tourdejouer=1
                         elif pionr2==1:
                             x1r2=a
                             x2r2=z
                             y1r2=e
                             y2r2=r
                             pion_r_2= canvas.create_rectangle(x1r2, x2r2, y1r2, y2r2, fill="red", width=2)
+                            tourdejouer=1
                         elif pionr3==1:
                             x1r3=a
                             x2r3=z
                             y1r3=e
                             y2r3=r
                             pion_r_3= canvas.create_rectangle(x1r3, x2r3, y1r3, y2r3, fill="red", width=2)
+                            tourdejouer=1
 
 
 def ClicCase(event):
@@ -270,6 +276,7 @@ def ClicCase(event):
                 nb_tours+=1
                 case5_couleure=1
                 case5_libre=False
+                print(case5_couleure)
             else:
                 positionnement(375,375,425,425)
                 nb_tours+=1
@@ -285,7 +292,7 @@ def ClicCase(event):
             else:
                 positionnement(725,375,775,425)
                 nb_tours+=1
-                case5_couleure=0
+                case6_couleure=0
                 case5_libre=False
         elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775:
             #case7
@@ -349,11 +356,14 @@ def ClicCase(event):
             else:
                 nb_tours=nb_tours+2
         elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425:
+            print(case5_couleure)
+            print(tourdejouer)
             if case5_libre==False and case5_couleure==tourdejouer:
+                print(522)
                 verification5(375,375,425,425)
                 nb_tours+=1
             else:
-                nb_tours=nb_tours+2
+                nb_tours=nb_tours+2 
         elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425:
             if case6_libre==False and case6_couleure==tourdejouer:
                 verification6(725,375,775,425)
@@ -384,55 +394,64 @@ def ClicCase(event):
                 nb_tours+=1
             else:
                 positionnement(25,25,75,75)
-                selectionner=0  
+                selectionner=0
+                nb_tours+=1
         elif event.x>=375 and event.x<=425 and event.y>=25 and event.y<=75 and (selectionner==1 or selectionner==3 or selectionner==5) :
             if case2_libre==False:
                 nb_tours+=1
             else:
                 positionnement(375,25,425,75)
                 selectionner=0
+                nb_tours+=1
         elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75 and (selectionner==2 or selectionner==6 or selectionner==5):
             if case3_libre==False:
                 nb_tours+=1
             else:
                 positionnement(725,25,775,75)
                 selectionner=0
+                nb_tours+=1
         elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425 and (selectionner==1 or selectionner==7 or selectionner==5):
             if case4_libre==False:
                 nb_tours+=1
             else:
                 positionnement(25,375,75,425)
                 selectionner=0
+                nb_tours+=1
         elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425 and (selectionner==1 or selectionner==2 or selectionner==3 or selectionner==4 or selectionner==6 or selectionner==7 or selectionner==8 or selectionner==9):
             if case5_libre==False:
                 nb_tours+=1
             else:
                 positionnement(375,375,425,425)
                 selectionner=0
+                nb_tours+=1
         elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425 and (selectionner==4 or selectionner==9 or selectionner==5):
             if case6_libre==False:
                 nb_tours+=1
             else:
                 positionnement(725,375,775,425)
                 selectionner=0
+                nb_tours+=1
         elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775 and (selectionner==4 or selectionner==8 or selectionner==5):
             if case7_libre==False:
                 nb_tours+=1
             else:
                 positionnement(25,725,75,775)
                 selectionner=0
+                nb_tours+=1
         elif event.x>=375 and event.x<=425 and event.y>=725 and event.y<=775 and (selectionner==7 or selectionner==9 or selectionner==5):
             if case8_libre==False:
                 nb_tours+=1
             else:
                 positionnement(375,725,425,775)
                 selectionner=0
+                nb_tours+=1
         elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775 and (selectionner==8 or selectionner==6 or selectionner==5):
             if case9_libre==False:
                 nb_tours+=1
             else:
                 positionnement(725,725,775,775)
                 selectionner=0
+                
 
 
 
@@ -610,17 +629,23 @@ def verification5(q,s,d,f):
     global selectionner
     if case1_libre==False and case2_libre==False and case3_libre==False and case4_libre==False and case6_libre==False and case7_libre==False and case8_libre==False and case9_libre==False:
         nb_tours+=1
+        print(92)
     elif case5_libre==False and case5_couleure==1:
+        print(923)
         if x1b1==q and x2b1==s and y1b1==d and y2b1==f:
             pionb1=1
             selectionner=5
+            print(93)
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=5
+            print(94)
         else :
             pionb3=1
             selectionner=5
+            print(95)
     elif case5_libre==False and case5_couleure==0:
+        print(922)
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=5
