@@ -10,7 +10,7 @@ https://github.com/uvsq22008953/Projet_Tapatan
 
 import tkinter as tk
 import random
-
+import pickle
 #VARIABLES POSITIONS PIONS
 x1b1=0
 x2b1=0
@@ -786,6 +786,76 @@ def verification9(q,s,d,f):
     else:
         nb_tours+=1
 
+emplacement = [ case1_libre, case2_libre, case3_libre, case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre ]
+
+def Sauvegarder():
+    pickle.dump (emplacement, open("sauvegarde", "wb"))
+
+def Charger ():
+    global case1_libre, case2_libre, case3_libre, case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre
+    global case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure
+    global nb_tours
+    global emplacement
+
+    emplacement = pickle.load (open("sauvegarde", "rb"))
+
+    if emplacement == True and case1_couleure == 0 :  
+        pion_b_1 = canvas.create_rectangle(x1b1, x2b1, y1b1, y2b1, fill="blue", width=2)
+        nb_tours += 1 
+    elif emplacement[0] == True and case1_couleure == 1 :
+        pion_r_1 = canvas.create_rectangle(x1r1, x2r1, y1r1, y2r1, fill="red", width=2)
+        nb_tours += 1 
+
+    elif emplacement[1] == True and case2_couleure == 0 :
+        pion_b_2 = canvas.create_rectangle(x1b2, x2b2, y1b2, y2b2, fill="blue", width=2)
+        nb_tours += 1 
+    elif emplacement[1] == True and case2_couleure == 1 :
+        pion_r_2 = canvas.create_rectangle(x1r2, x2r2, y1r2, y2r2, fill="red", width=2)
+        nb_tours += 1
+
+    elif emplacement[2] == True and case2_couleure == 0 :
+        pion_b_3 = canvas.create_rectangle(x1b3, x2b3, y1b3, y2b3, fill="blue", width=2)
+        nb_tours += 1
+    elif emplacement[2] == True and case2_couleure == 1 :
+        pion_r_3 = canvas.create_rectangle(x1r3, x2r3, y1r3, y2r3, fill="red", width=2)
+        nb_tours += 1
+    
+    elif emplacement[3] == True and case2_couleure == 0 :
+        pion_b_1 = canvas.create_rectangle(x1b1, x2b1, y1b1, y2b1, fill="blue", width=2)
+        nb_tours += 1
+    elif emplacement[3] == True and case2_couleure == 1 :
+        pion_r_1 = canvas.create_rectangle(x1r1, x2r1, y1r1, y2r1, fill="red", width=2)
+        nb_tours += 1
+
+    elif emplacement[5] == True and case2_couleure == 0 :
+        pion_b_2 = canvas.create_rectangle(x1b2, x2b2, y1b2, y2b2, fill="blue", width=2)
+        nb_tours += 1 
+    elif emplacement[5] == True and case2_couleure == 1 :
+        pion_r_2 = canvas.create_rectangle(x1r2, x2r2, y1r2, y2r2, fill="red", width=2)
+        nb_tours += 1
+
+    elif emplacement[6] == True and case2_couleure == 0 :
+        pion_b_3 = canvas.create_rectangle(x1b3, x2b3, y1b3, y2b3, fill="blue", width=2)
+        nb_tours += 1
+    elif emplacement[6] == True and case2_couleure == 1 :
+        pion_r_3 = canvas.create_rectangle(x1r3, x2r3, y1r3, y2r3, fill="red", width=2)
+        nb_tours += 1
+    
+    elif emplacement[7] == True and case2_couleure == 0 :
+        pion_b_1 = canvas.create_rectangle(x1b1, x2b1, y1b1, y2b1, fill="blue", width=2)
+        nb_tours+= 1
+    elif emplacement[7] == True and case2_couleure == 1 :
+        pion_r_1 = canvas.create_rectangle(x1r1, x2r1, y1r1, y2r1, fill="red", width=2)
+        nb_tours +=1
+    
+    elif emplacement[8] == True and case2_couleure == 0 :
+        pion_b_2 = canvas.create_rectangle(x1b2, x2b2, y1b2, y2b2, fill="blue", width=2)
+        nb_tours += 1
+    elif emplacement[8] == True and case2_couleure == 1 :
+        pion_r_2 = canvas.create_rectangle(x1r2, x2r2, y1r2, y2r2, fill="red", width=2)
+        nb_tours += 1
+
+    return(emplacement)
 
 root = tk.Tk()
 root.title("Jeu du Tapatan")
@@ -801,5 +871,9 @@ ligneh1 = canvas.create_line(50, 50, 750, 50)
 ligneh2 = canvas.create_line(50, 750, 750, 750)
 lignev1 = canvas.create_line(50, 50, 50, 750)
 lignev2 = canvas.create_line(750, 50, 750, 750)
-
+sauvegarde = tk.Button(root, text= "Sauvegarder", bg = "grey", command=Sauvegarder)
+charger = tk.Button(root, text= "Charger", bg = "grey", command=Charger)
+canvas.grid(row=0, column=0, columnspan=4, rowspan=6)
+sauvegarde.grid(row=6, column=1)
+charger.grid(row=6, column=2)
 root.mainloop()
