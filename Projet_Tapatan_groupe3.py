@@ -73,12 +73,21 @@ case6_couleure=0
 case7_couleure=0
 case8_couleure=0
 case9_couleure=0
+pion_b_1=0
+pion_b_2=0
+pion_b_3=0
+pion_r_1=0
+pion_r_2=0
+pion_r_3=0
+jel=0 
 pionr1=0
 pionr2=0
 pionr3=0
 pionb1=0
 pionb2=0
 pionb3=0
+dx=0
+dy=0
 
 selectionner=0
 
@@ -91,13 +100,15 @@ def positionnement(a, z, e, r):
     global nb_placements_bleu
     global nb_placements_rouge
     global pionr1, pionr2, pionr3
-    global pionb1,pionb2,pionb3
+    global pionb1,pionb2,pionb3,pion_b_1,pion_b_2,pion_b_3,pion_r_1,pion_r_2,pion_r_3
     global x1b1,x2b1,y1b1,y2b1
     global x1b2,x2b2,y1b2,y2b2
     global x1b3,x2b3,y1b3,y2b3
     global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x1r2,y1r2,y2r2
+    global x1r2,x2r2,y1r2,y2r2
     global x1r3,x2r3,y1r3,y2r3
+    global jel
+    global dx,dy
     if nb_tours<=6:
                     if tourdejouer==1:
                         if nb_tours<=2:
@@ -156,44 +167,130 @@ def positionnement(a, z, e, r):
                             x2b1=z
                             y1b1=e
                             y2b1=r
-                            pion_b_1= canvas.create_rectangle(x1b1, x2b1, y1b1, y2b1, fill="blue", width=2)
-                            tourdejouer=0
+                            if dx==x1b1:
+                                dy=x2b1-dy
+                                canvas.move(pion_b_1,0,dy)
+                                tourdejouer=0
+                                pionb1=0
+                            elif dy==x2b1:
+                                dx=x1b1-dx
+                                canvas.move(pion_b_1,dx,0)
+                                tourdejouer=0
+                                pionb1=0
+                            else:
+                                dx=x1b1-dx
+                                dy=x2b1-dy
+                                canvas.move(pion_b_1,dx,dy)
+                                tourdejouer=0
+                                pionb1=0
                         elif pionb2==1:
                             x1b2=a
                             x2b2=z
                             y1b2=e
                             y2b2=r
-                            pion_b_2= canvas.create_rectangle(x1b2, x2b2, y1b2, y2b2, fill="blue", width=2)
-                            tourdejouer=0
+                            if dx==x1b2:
+                                dy=x2b2-dy
+                                canvas.move(pion_b_2,0,dy)
+                                tourdejouer=0
+                                pionb2=0
+                            elif dy==x2b2:
+                                dx=x1b2-dx
+                                canvas.move(pion_b_2,dx,0)
+                                tourdejouer=0
+                                pionb2=0
+                            else:
+                                dx=x1b2-dx
+                                dy=x2b2-dy
+                                canvas.move(pion_b_2,dx,dy)
+                                tourdejouer=0
+                                pionb2=0
                         elif pionb3==1:
                             x1b3=a
                             x2b3=z
                             y1b3=e
                             y2b3=r
-                            pion_b_3= canvas.create_rectangle(x1b3, x2b3, y1b3, y2b3, fill="blue", width=2)
-                            tourdejouer=0
+                            if dx==x1b3:
+                                dy=x2b3-dy
+                                canvas.move(pion_b_3,0,dy)
+                                tourdejouer=0
+                                pionb3=0
+                            elif dy==x2b3:
+                                dx=x1b3-dx
+                                canvas.move(pion_b_3,dx,0)
+                                tourdejouer=0
+                                pionb3=0
+                            else:
+                                dx=x1b3-dx
+                                dy=x2b3-dy
+                                canvas.move(pion_b_3,dx,dy)
+                                tourdejouer=0
+                                pionb3=0
                     elif tourdejouer==0:
                         if pionr1==1:
                             x1r1=a
                             x2r1=z
                             y1r1=e
                             y2r1=r
-                            pion_r_1= canvas.create_rectangle(x1r1, x2r1, y1r1, y2r1, fill="red", width=2)
-                            tourdejouer=1
+                            print(dx,x1r1)
+                            if dx==x1r1:
+                                dy=x2r1-dy
+                                canvas.move(pion_r_1,0,dy)
+                                tourdejouer=1
+                                pionr1=0
+                            elif dy==x2r1:
+                                dx=x1r1-dx
+                                canvas.move(pion_r_1,dx,0)
+                                tourdejouer=1
+                                pionr1=0
+                            else:
+                                dx=x1r1-dx
+                                dy=x2r1-dy
+                                canvas.move(pion_r_1,dx,dy)
+                                tourdejouer=1
+                                pionr1=0
+                                print("gg")
                         elif pionr2==1:
                             x1r2=a
                             x2r2=z
                             y1r2=e
                             y2r2=r
-                            pion_r_2= canvas.create_rectangle(x1r2, x2r2, y1r2, y2r2, fill="red", width=2)
-                            tourdejouer=1
+                            if dx==x1r2:
+                                dy=x2r2-dy
+                                canvas.move(pion_r_2,0,dy)
+                                tourdejouer=1
+                                pionr2=0
+                            elif dy==x2r2:
+                                dx=x1r2-dx
+                                canvas.move(pion_r_2,dx,0)
+                                tourdejouer=1
+                                pionr2=0
+                            else:
+                                dx=x1r2-dx
+                                dy=x2r2-dy
+                                canvas.move(pion_r_2,dx,dy)
+                                tourdejouer=1
+                                pionr2=0
                         elif pionr3==1:
                             x1r3=a
                             x2r3=z
                             y1r3=e
                             y2r3=r
-                            pion_r_3= canvas.create_rectangle(x1r3, x2r3, y1r3, y2r3, fill="red", width=2)
-                            tourdejouer=1
+                            if dx==x1r3:
+                                dy=x2r3-dy
+                                canvas.move(pion_r_3,0,dy)
+                                tourdejouer=1
+                                pionr3=0
+                            elif dy==x2r3:
+                                dx=x1r3-dx
+                                canvas.move(pion_r_3,dx,0)
+                                tourdejouer=1
+                                pionr3=0
+                            else:
+                                dx=x1r3-dx
+                                dy=x2r3-dy
+                                canvas.move(pion_r_3,dx,dy)
+                                tourdejouer=1
+                                pionr3=0
 
 
 def ClicCase(event):
@@ -292,7 +389,7 @@ def ClicCase(event):
                 positionnement(725,375,775,425)
                 nb_tours+=1
                 case6_couleure=0
-                case5_libre=False
+                case6_libre=False
         elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775:
             #case7
             if tourdejouer==1:
@@ -316,7 +413,7 @@ def ClicCase(event):
                 positionnement(375,725,425,775)
                 nb_tours+=1
                 case8_libre=False
-                case8_couleure=1
+                case8_couleure=0
         elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775:
             #case9
             if tourdejouer==1:
@@ -342,12 +439,15 @@ def ClicCase(event):
                 nb_tours+=1
             else:
                 nb_tours=nb_tours+2
+                print("fut")
         elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75:
             if case3_libre==False and case3_couleure==tourdejouer:
                 verification3(725,25,775,75)
                 nb_tours+=1
+                print("42euh")
             else:
                 nb_tours=nb_tours+2
+                print(43)
         elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425:
             if case4_libre==False and case4_couleure==tourdejouer:
                 verification4(25,375,75,425)
@@ -366,6 +466,7 @@ def ClicCase(event):
                 nb_tours+=1
             else:
                 nb_tours=nb_tours+2
+                print("ash22")
         elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775:
             if case7_libre==False and case7_couleure==tourdejouer:
                 verification7(25,725,75,775)
@@ -376,8 +477,10 @@ def ClicCase(event):
             if case8_libre==False and case8_couleure==tourdejouer:
                 verification8(375,725,425,775)
                 nb_tours+=1
+                print("ash223")
             else:
                 nb_tours=nb_tours+2
+                print("ash24")
         else:
             if case9_libre==False and case9_couleure==tourdejouer:
                 verification9(725,725,775,775)
@@ -389,64 +492,85 @@ def ClicCase(event):
             if case1_libre==False:
                 nb_tours+=1
             else:
+                case1_couleure=tourdejouer
                 positionnement(25,25,75,75)
                 selectionner=0
+                case1_libre=False
                 nb_tours+=1
         elif event.x>=375 and event.x<=425 and event.y>=25 and event.y<=75 and (selectionner==1 or selectionner==3 or selectionner==5) :
             if case2_libre==False:
                 nb_tours+=1
             else:
+                case2_couleure=tourdejouer
                 positionnement(375,25,425,75)
                 selectionner=0
+                case2_libre=False
                 nb_tours+=1
         elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75 and (selectionner==2 or selectionner==6 or selectionner==5):
             if case3_libre==False:
                 nb_tours+=1
             else:
+                case3_couleure=tourdejouer
                 positionnement(725,25,775,75)
                 selectionner=0
+                case3_libre=False
                 nb_tours+=1
         elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425 and (selectionner==1 or selectionner==7 or selectionner==5):
             if case4_libre==False:
                 nb_tours+=1
             else:
+                case4_couleure=tourdejouer
                 positionnement(25,375,75,425)
                 selectionner=0
+                case4_libre=False
                 nb_tours+=1
         elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425 and (selectionner==1 or selectionner==2 or selectionner==3 or selectionner==4 or selectionner==6 or selectionner==7 or selectionner==8 or selectionner==9):
             if case5_libre==False:
                 nb_tours+=1
             else:
+                case5_couleure=tourdejouer
                 positionnement(375,375,425,425)
                 selectionner=0
+                case5_libre=False
                 nb_tours+=1
-        elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425 and (selectionner==4 or selectionner==9 or selectionner==5):
+        elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425 and (selectionner==3 or selectionner==9 or selectionner==5):
+            print("fr")
             if case6_libre==False:
                 nb_tours+=1
+                print("fr")
             else:
+                case6_couleure=tourdejouer
                 positionnement(725,375,775,425)
                 selectionner=0
+                case6_libre=False
                 nb_tours+=1
         elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775 and (selectionner==4 or selectionner==8 or selectionner==5):
             if case7_libre==False:
                 nb_tours+=1
             else:
+                case7_couleure=tourdejouer
                 positionnement(25,725,75,775)
                 selectionner=0
+                case7_libre=False
                 nb_tours+=1
         elif event.x>=375 and event.x<=425 and event.y>=725 and event.y<=775 and (selectionner==7 or selectionner==9 or selectionner==5):
             if case8_libre==False:
                 nb_tours+=1
             else:
+                case8_couleure=tourdejouer
                 positionnement(375,725,425,775)
                 selectionner=0
+                case8_libre=False
                 nb_tours+=1
         elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775 and (selectionner==8 or selectionner==6 or selectionner==5):
             if case9_libre==False:
                 nb_tours+=1
             else:
+                case9_couleure=tourdejouer
                 positionnement(725,725,775,775)
                 selectionner=0
+                case9_libre=False
+                nb_tours+=1
                 
 
 
@@ -461,40 +585,53 @@ def verification1(q,s,d,f):
     global x1b2,x2b2,y1b2,y2b2
     global x1b3,x2b3,y1b3,y2b3
     global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x1r2,y1r2,y2r2
+    global x1r2,x2r2,y1r2,y2r2
     global x1r3,x2r3,y1r3,y2r3
     global selectionner
+    global dx,dy
+    global jel
     if case2_libre==False and case5_libre==False and case4_libre==False:
         nb_tours+=1
     elif case1_libre==False and case1_couleure==1:
         if x1b1==q and x2b1==s and y1b1==d and y2b1==f:
             pionb1=1
             selectionner=1
-            print(57)
+            case1_libre=True
+            dx=q
+            dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=1
-            print(55)
+            case1_libre=True
+            dx=q
+            dy=s
         else :
             pionb3=1
             selectionner=1
-            print(56)
+            case1_libre=True
+            dx=q
+            dy=s
     elif case1_libre==False and case1_couleure==0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=1
-            print(58)
+            case1_libre=True
+            dx=q
+            dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=1
-            print(59)
+            case1_libre=True
+            dx=q
+            dy=s
         else :
             pionr3=1
             selectionner=1
-            print(60)
+            case1_libre=True
+            dx=q
+            dy=s
     else:
         nb_tours+=1
-        print(54)
     
 def verification2(q,s,d,f):
     global tourdejouer, nb_tours
@@ -506,31 +643,50 @@ def verification2(q,s,d,f):
     global x1b2,x2b2,y1b2,y2b2
     global x1b3,x2b3,y1b3,y2b3
     global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x1r2,y1r2,y2r2
+    global x1r2,x2r2,y1r2,y2r2
     global x1r3,x2r3,y1r3,y2r3
     global selectionner
+    global dx,dy
     if case1_libre==False and case3_libre==False and case5_libre==False:
         nb_tours+=1
     elif case2_libre==False and case2_couleure==1:
         if x1b1==q and x2b1==s and y1b1==d and y2b1==f:
             pionb1=1
             selectionner=2
+            case2_libre=True
+            dx=q
+            dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=2
+            case2_libre=True
+            dx=q
+            dy=s
         else :
             pionb3=1
             selectionner=2
+            case2_libre=True
+            dx=q
+            dy=s
     elif case2_libre==False and case2_couleure==0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=2
+            case2_libre=True
+            dx=q
+            dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=2
+            case2_libre=True
+            dx=q
+            dy=s
         else :
             pionr3=1
             selectionner=2
+            case2_libre=True
+            dx=q
+            dy=s
     else:
         nb_tours+=1
 
@@ -544,8 +700,9 @@ def verification3(q,s,d,f):
     global x1b2,x2b2,y1b2,y2b2
     global x1b3,x2b3,y1b3,y2b3
     global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x1r2,y1r2,y2r2
+    global x1r2,x2r2,y1r2,y2r2
     global x1r3,x2r3,y1r3,y2r3
+    global dx,dy
     global selectionner
     if case6_libre==False and case2_libre==False and case5_libre==False:
         nb_tours+=1
@@ -553,22 +710,41 @@ def verification3(q,s,d,f):
         if x1b1==q and x2b1==s and y1b1==d and y2b1==f:
             pionb1=1
             selectionner=3
+            case3_libre=True
+            dx=q
+            dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=3
+            case3_libre=True
+            dx=q
+            dy=s
+            print(44)
         else :
             pionb3=1
             selectionner=3
+            case3_libre=True
+            dx=q
+            dy=s
     elif case3_libre==False and case3_couleure==0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=3
+            case3_libre=True
+            dx=q
+            dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=3
+            case3_libre=True
+            dx=q
+            dy=s
         else :
             pionr3=1
             selectionner=3
+            case3_libre=True
+            dx=q
+            dy=s
     else:
         nb_tours+=1
 
@@ -582,8 +758,9 @@ def verification4(q,s,d,f):
     global x1b2,x2b2,y1b2,y2b2
     global x1b3,x2b3,y1b3,y2b3
     global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x1r2,y1r2,y2r2
+    global x1r2,x2r2,y1r2,y2r2
     global x1r3,x2r3,y1r3,y2r3
+    global dx,dy
     global selectionner
     if case1_libre==False and case5_libre==False and case7_libre==False:
         nb_tours+=1
@@ -591,22 +768,40 @@ def verification4(q,s,d,f):
         if x1b1==q and x2b1==s and y1b1==d and y2b1==f:
             pionb1=1
             selectionner=4
+            case4_libre=True
+            dx=q
+            dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=4
+            case4_libre=True
+            dx=q
+            dy=s
         else :
             pionb3=1
             selectionner=4
+            case4_libre=True
+            dx=q
+            dy=s
     elif case4_libre==False and case4_couleure==0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=4
+            case4_libre=True
+            dx=q
+            dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=4
+            case4_libre=True
+            dx=q
+            dy=s
         else :
             pionr3=1
             selectionner=4
+            case4_libre=True
+            dx=q
+            dy=s
     else:
         nb_tours+=1
 
@@ -620,37 +815,52 @@ def verification5(q,s,d,f):
     global x1b2,x2b2,y1b2,y2b2
     global x1b3,x2b3,y1b3,y2b3
     global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x1r2,y1r2,y2r2
+    global x1r2,x2r2,y1r2,y2r2
+    global dx,dy
     global x1r3,x2r3,y1r3,y2r3
     global selectionner
+    print("capasse")
     if case1_libre==False and case2_libre==False and case3_libre==False and case4_libre==False and case6_libre==False and case7_libre==False and case8_libre==False and case9_libre==False:
         nb_tours+=1
-        print(92)
     elif case5_libre==False and case5_couleure==1:
         print(923)
         if x1b1==q and x2b1==s and y1b1==d and y2b1==f:
             pionb1=1
             selectionner=5
-            print(93)
+            case5_libre=True
+            dx=q
+            dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=5
-            print(94)
+            case5_libre=True
+            dx=q
+            dy=s
         else :
             pionb3=1
             selectionner=5
-            print(95)
+            case5_libre=True
+            dx=q
+            dy=s
     elif case5_libre==False and case5_couleure==0:
-        print(922)
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=5
+            case5_libre=True
+            dx=q
+            dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=5
+            case5_libre=True
+            dx=q
+            dy=s
         else :
             pionr3=1
             selectionner=5
+            case5_libre=True
+            dx=q
+            dy=s
     else:
         nb_tours+=1
 
@@ -662,33 +872,54 @@ def verification6(q,s,d,f):
     global pionb1,pionb2,pionb3
     global x1b1,x2b1,y1b1,y2b1
     global x1b2,x2b2,y1b2,y2b2
+    global dx,dy
     global x1b3,x2b3,y1b3,y2b3
     global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x1r2,y1r2,y2r2
+    global x1r2,x2r2,y1r2,y2r2
     global x1r3,x2r3,y1r3,y2r3
     global selectionner
+    print(x2r2,s)
     if case3_libre==False and case5_libre==False and case9_libre==False:
         nb_tours+=1
     elif case6_libre==False and case6_couleure==1:
         if x1b1==q and x2b1==s and y1b1==d and y2b1==f:
             pionb1=1
             selectionner=6
+            case6_libre=True
+            dx=q
+            dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=6
+            case6_libre=True
+            dx=q
+            dy=s
         else :
             pionb3=1
             selectionner=6
+            case6_libre=True
+            dx=q
+            dy=s
     elif case6_libre==False and case6_couleure==0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=6
+            case6_libre=True
+            dx=q
+            dy=s
+            print("capaaaas")
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=6
+            case6_libre=True
+            dx=q
+            dy=s
         else :
             pionr3=1
             selectionner=6
+            case6_libre=True
+            dx=q
+            dy=s
     else:
         nb_tours+=1
 
@@ -702,7 +933,8 @@ def verification7(q,s,d,f):
     global x1b2,x2b2,y1b2,y2b2
     global x1b3,x2b3,y1b3,y2b3
     global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x1r2,y1r2,y2r2
+    global x1r2,x2r2,y1r2,y2r2
+    global dx,dy
     global x1r3,x2r3,y1r3,y2r3
     global selectionner
     if case4_libre==False and case8_libre==False and case5_libre==False:
@@ -711,22 +943,40 @@ def verification7(q,s,d,f):
         if x1b1==q and x2b1==s and y1b1==d and y2b1==f:
             pionb1=1
             selectionner=7
+            case7_libre=True
+            dx=q
+            dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=7
+            case7_libre=True
+            dx=q
+            dy=s
         else :
             pionb3=1
             selectionner=7
+            case7_libre=True
+            dx=q
+            dy=s
     elif case7_libre==False and case7_couleure==0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=7
+            case7_libre=True
+            dx=q
+            dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=7
+            case7_libre=True
+            dx=q
+            dy=s
         else :
             pionr3=1
             selectionner=7
+            case7_libre=True
+            dx=q
+            dy=s
     else:
         nb_tours+=1
 
@@ -739,8 +989,9 @@ def verification8(q,s,d,f):
     global x1b1,x2b1,y1b1,y2b1
     global x1b2,x2b2,y1b2,y2b2
     global x1b3,x2b3,y1b3,y2b3
+    global dx,dy
     global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x1r2,y1r2,y2r2
+    global x1r2,x2r2,y1r2,y2r2
     global x1r3,x2r3,y1r3,y2r3
     global selectionner
     if case7_libre==False and case9_libre==False and case5_libre==False:
@@ -749,22 +1000,40 @@ def verification8(q,s,d,f):
         if x1b1==q and x2b1==s and y1b1==d and y2b1==f:
             pionb1=1
             selectionner=8
+            case8_libre=True
+            dx=q
+            dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=8
+            case8_libre=True
+            dx=q
+            dy=s
         else :
             pionb3=1
             selectionner=8
+            case8_libre=True
+            dx=q
+            dy=s
     elif case8_libre==False and case8_couleure==0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=8
+            case8_libre=True
+            dx=q
+            dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=8
+            case8_libre=True
+            dx=q
+            dy=s
         else :
             pionr3=1
             selectionner=8
+            case8_libre=True
+            dx=q
+            dy=s
     else:
         nb_tours+=1
 
@@ -779,7 +1048,8 @@ def verification9(q,s,d,f):
     global x1b2,x2b2,y1b2,y2b2
     global x1b3,x2b3,y1b3,y2b3
     global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x1r2,y1r2,y2r2
+    global x1r2,x2r2,y1r2,y2r2
+    global dx,dy
     global x1r3,x2r3,y1r3,y2r3
     global selectionner
     if case6_libre==False and case8_libre==False and case5_libre==False:
@@ -788,22 +1058,40 @@ def verification9(q,s,d,f):
         if x1b1==q and x2b1==s and y1b1==d and y2b1==f:
             pionb1=1
             selectionner=9
+            case9_libre=True
+            dx=q
+            dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=9
+            case9_libre=True
+            dx=q
+            dy=s
         else :
             pionb3=1
             selectionner=9
+            case9_libre=True
+            dx=q
+            dy=s
     elif case9_libre==False and case9_couleure==0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=9
+            case9_libre=True
+            dx=q
+            dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=9
+            case9_libre=True
+            dx=q
+            dy=s
         else :
             pionr3=1
             selectionner=9
+            case9_libre=True
+            dx=q
+            dy=s
     else:
         nb_tours+=1
 
