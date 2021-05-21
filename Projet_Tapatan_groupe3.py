@@ -786,7 +786,7 @@ def verification9(q,s,d,f):
     else:
         nb_tours+=1
 
-emplacement = [ case1_libre, case2_libre, case3_libre, case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre ]
+emplacement = [[case1_libre, case2_libre, case3_libre, case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre],[case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure]]
 
 def Sauvegarder():
     pickle.dump (emplacement, open("sauvegarde", "wb"))
@@ -796,68 +796,98 @@ def Charger ():
     global case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure
     global nb_tours
     global emplacement
+    global x1b1,x2b1,y1b1,y2b1
+    global x1b2,x2b2,y1b2,y2b2
+    global x1b3,x2b3,y1b3,y2b3
+    global x1r1,x2r1,y1r1,y2r1
+    global x1r2,x1r2,y1r2,y2r2
+    global x1r3,x2r3,y1r3,y2r3
+    
+
+    
 
     emplacement = pickle.load (open("sauvegarde", "rb"))
 
-    if emplacement == False  and case1_couleure == 0 :  
-        pion_b_1 = canvas.create_rectangle(x1b1, x2b1, y1b1, y2b1, fill="blue", width=2)
+    if case1_couleure == 0 : 
+        positionnement(25,25,75,75)
+        pion_b_1 = canvas.create_rectangle(x1b1,x2b1,y1b1,y2b1, fill="blue", width=2)
         nb_tours += 1 
-    elif emplacement[0] == False and case1_couleure == 1 :
-        pion_r_1 = canvas.create_rectangle(x1r1, x2r1, y1r1, y2r1, fill="red", width=2)
+    elif case1_couleure == 1 : 
+        positionnement(25,25,75,75) 
+        pion_r_1 = canvas.create_rectangle(x1r1,x2r1,y1r1,y2r1, fill="red", width=2)
         nb_tours += 1 
 
-    elif emplacement[1] == False and case2_couleure == 0 :
+    if case2_couleure == 0 :
+        positionnement(375,25,425,75)  
+        pion_b_2 = canvas.create_rectangle(x1b2,x2b2,y1b2,y2b2, fill="blue", width=2)
+        nb_tours += 1 
+    elif case2_couleure == 1 :
+        positionnement(375,25,425,75)
+        pion_r_2 = canvas.create_rectangle(x1r2,x1r2,y1r2,y2r2, fill="red", width=2)
+        nb_tours += 1
+
+    if case3_couleure == 0 :
+        positionnement(725,25,775,75)
+        pion_b_3 = canvas.create_rectangle(x1b3,x2b3,y1b3,y2b3, fill="blue", width=2)
+        nb_tours += 1
+    elif case3_couleure == 1 :
+        positionnement(725,25,775,75)
+        pion_r_3 = canvas.create_rectangle(x1r3,x2r3,y1r3,y2r3, fill="red", width=2)
+        nb_tours += 1
+    
+    if case4_couleure  == 0 :
+        positionnement(25,375,75,425)
+        pion_b_1 = canvas.create_rectangle(x1b1, x2b1, y1b1, y2b1, fill="blue", width=2)
+        nb_tours += 1
+    elif case4_couleure  == 1 : 
+        positionnement(25,375,75,425)
+        pion_r_1 = canvas.create_rectangle(x1r1, x2r1, y1r1, y2r1, fill="red", width=2)
+        nb_tours += 1
+
+    if case5_couleure == 0 :
+        positionnement(375,375,425,425)
         pion_b_2 = canvas.create_rectangle(x1b2, x2b2, y1b2, y2b2, fill="blue", width=2)
         nb_tours += 1 
-    elif emplacement[1] == False and case2_couleure == 1 :
+    elif case5_couleure  == 1 :
+        positionnement(375,375,425,425)
         pion_r_2 = canvas.create_rectangle(x1r2, x2r2, y1r2, y2r2, fill="red", width=2)
         nb_tours += 1
 
-    elif emplacement[2] == False and case2_couleure == 0 :
+    if case6_couleure  == 0 :
+        positionnement(725,375,775,425)
         pion_b_3 = canvas.create_rectangle(x1b3, x2b3, y1b3, y2b3, fill="blue", width=2)
         nb_tours += 1
-    elif emplacement[2] == False and case2_couleure == 1 :
+    elif case6_couleure  == 1 :
+        positionnement(725,375,775,425)
         pion_r_3 = canvas.create_rectangle(x1r3, x2r3, y1r3, y2r3, fill="red", width=2)
         nb_tours += 1
     
-    elif emplacement[3] == False and case2_couleure == 0 :
-        pion_b_1 = canvas.create_rectangle(x1b1, x2b1, y1b1, y2b1, fill="blue", width=2)
-        nb_tours += 1
-    elif emplacement[3] == False and case2_couleure == 1 :
-        pion_r_1 = canvas.create_rectangle(x1r1, x2r1, y1r1, y2r1, fill="red", width=2)
-        nb_tours += 1
-
-    elif emplacement[4] == False and case2_couleure == 0 :
-        pion_b_2 = canvas.create_rectangle(x1b2, x2b2, y1b2, y2b2, fill="blue", width=2)
-        nb_tours += 1 
-    elif emplacement[4] == False and case2_couleure == 1 :
-        pion_r_2 = canvas.create_rectangle(x1r2, x2r2, y1r2, y2r2, fill="red", width=2)
-        nb_tours += 1
-
-    elif emplacement[5] == False and case2_couleure == 0 :
-        pion_b_3 = canvas.create_rectangle(x1b3, x2b3, y1b3, y2b3, fill="blue", width=2)
-        nb_tours += 1
-    elif emplacement[5] == False and case2_couleure == 1 :
-        pion_r_3 = canvas.create_rectangle(x1r3, x2r3, y1r3, y2r3, fill="red", width=2)
-        nb_tours += 1
-    
-    elif emplacement[6] == False and case2_couleure == 0 :
+    if case7_couleure  == 0 :
+        positionnement(25,725,75,775)
         pion_b_1 = canvas.create_rectangle(x1b1, x2b1, y1b1, y2b1, fill="blue", width=2)
         nb_tours+= 1
-    elif emplacement[6] == False and case2_couleure == 1 :
+    elif case7_couleure  == 1 :
+        positionnement(25,725,75,775)
         pion_r_1 = canvas.create_rectangle(x1r1, x2r1, y1r1, y2r1, fill="red", width=2)
         nb_tours +=1
     
-    elif emplacement[7] == False and case2_couleure == 0 :
+    if case8_couleure  == 0 :
+        positionnement(375,725,425,775)
+        (375,725,425,775)
         pion_b_2 = canvas.create_rectangle(x1b2, x2b2, y1b2, y2b2, fill="blue", width=2)
         nb_tours += 1
-    elif emplacement[7] == False and case2_couleure == 1 :
+    elif case8_couleure  == 1 :
+        positionnement(375,725,425,775)
+        (375,725,425,775)
         pion_r_2 = canvas.create_rectangle(x1r2, x2r2, y1r2, y2r2, fill="red", width=2)
         nb_tours += 1
-    elif emplacement[8] == False and case2_couleure == 0 :
+
+    if case9_couleure == 0 :
+        positionnement(725,725,775,775)
         pion_b_3 = canvas.create_rectangle(x1b3, x2b3, y1b3, y2b3, fill="blue", width=2)
         nb_tours += 1
-    elif emplacement[8] == False and case2_couleure == 1 :
+    elif case9_couleure == 1 :
+        positionnement(725,725,775,775)
         pion_r_3 = canvas.create_rectangle(x1r3, x2r3, y1r3, y2r3, fill="red", width=2)
         nb_tours += 1
     
