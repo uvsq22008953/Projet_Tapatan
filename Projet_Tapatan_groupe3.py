@@ -12,37 +12,17 @@ import tkinter as tk
 import random
 import pickle
 from tkinter.constants import RIDGE
-#VARIABLES POSITIONS PIONS
-x1b1=0
-x2b1=0
-y1b1=0
-y2b1=0
-""""""
-x1b2=0
-x2b2=0
-y1b2=0
-y2b2=0
-""""""
-x1b3=0
-x2b3=0
-y1b3=0
-y2b3=0
-""""""
-x1r1=0
-x2r1=0
-y1r1=0
-y2r1=0
-""""""
-x1r2=0
-x2r2=0
-y1r2=0
-y2r2=0
-""""""
-x1r3=0
-x2r3=0
-y1r3=0
-y2r3=0
-""""""
+from tkinter import messagebox
+
+#VARIABLES POSITIONS PIONS BLEU
+x1b1, x2b1, y1b1, y2b1=0, 0, 0, 0
+x1b2, x2b2, y1b2, y2b2=0, 0, 0, 0
+x1b3, x2b3, y1b3, y2b3=0, 0, 0, 0
+#VARIABLES POSITIONS PIONS ROUGE
+x1r1, x2r1, y1r1, y2r1=0, 0, 0, 0
+x1r2, x2r2, y1r2, y2r2=0, 0, 0, 0
+x1r3, x2r3, y1r3, y2r3=0, 0, 0, 0
+
 #VALEURS QUE L'ON VA MODIFIER
 x1, x2, y1, y2=0, 0, 0, 0
 
@@ -50,7 +30,6 @@ nb_tours=1
 # 0 si tour des rouges // 1 si tour des bleus
 tourdejouer=random.randint(0, 1)
 premiertour = tourdejouer
-print(tourdejouer)
 phase_placement, jel, selectionner, dx, dy = 1, 0, 0, 0, 0
 nb_placements_bleu, nb_placements_rouge = 0, 0
 case1_libre, case2_libre, case3_libre, case4_libre, case5_libre=True, True, True, True, True
@@ -1143,26 +1122,29 @@ def ResetPion():
 
 def ConditionVictoire():
     global score_rouge, score_bleu
-    if (x1b1 == x1b2 and x1b2 == x1b3 and x1b1 != 0) or (y1b1 == y1b2 and y1b2 == y1b3 and y1b1 != 0):
+    if (x1b1 == x1b2 and x1b2 == x1b3 and x1b1 != 0) or (y2b1 == y2b2 and y2b2 == y2b3 and y2b1 != 0):
         score_bleu += 1
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif ((x1b1 == 25 and y1b1 == 25) and (x1b2 == 375 and y1b2 == 375) and (x1b3 == 725 and y1b3 == 725)):
+    elif ((x1b1 == 25 and y2b1 == 75) and (x1b2 == 375 and y2b2 == 425) and (x1b3 == 725 and y2b3 == 775)):
         score_bleu += 1
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif ((x1b1 == 725 and y1b1 == 25) and (x1b2 == 375 and y1b2 == 375) and (x1b3 == 25 and y1b3 == 725)):
+    elif ((x1b1 == 725 and y2b1 == 75) and (x1b2 == 375 and y2b2 == 425) and (x1b3 == 25 and y2b3 == 775)):
         score_bleu += 1
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif (x1r1 == x1r2 and x1r2 == x1r3 and x1r1 != 0) or (y1r1 == y1r2 and y1r2 == y1r3 and y1r1 != 0):
+    elif (x1r1 == x1r2 and x1r2 == x1r3 and x1r1 != 0) or (y2r1 == y2r2 and y2r2 == y2r3 and y2r1 != 0):
         score_rouge += 1
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif ((x1r1 == 25 and y1r1 == 25) and (x1r2 == 375 and y1r2 == 375) and (x1r3 == 725 and y1r3 == 725)):
+    elif ((x1r1 == 25 and y2r1 == 75) and (x1r2 == 375 and y2r2 == 425) and (x1r3 == 725 and y2r3 == 775)):
         score_rouge += 1
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif ((x1r1 == 725 and y1r1 == 25) and (x1r2 == 375 and y1r2 == 375) and (x1r3 == 25 and y1r3 == 725)):
+    elif ((x1r1 == 725 and y2r1 == 75) and (x1r2 == 375 and y2r2 == 425) and (x1r3 == 25 and y2r3 == 775)):
         score_rouge += 1
         canvas.bind('<ButtonPress-1>', NouvelleManche)
     affichage_rouge.config(text = score_rouge)
     affichage_bleu.config(text = score_bleu)
+    print("score bleu ", score_bleu, "   score rouge ", score_rouge)
+    print("x1b1 ", x1b1, "x1b2 ", x1b2, "x1b3 ", x1b3)
+    print("y2b1 ", y2b1, "y2b2 ", y2b2, "y2b3 ", y2b3)
     Victoire()
 
 
@@ -1193,6 +1175,16 @@ def NewGame():
     global winner, score_bleu, score_rouge, score_perdant, score_gagnant
     winner, score_bleu, score_rouge, score_perdant, score_gagnant = "", 0, 0, 0, 0
     Initialisation()
+
+
+def Nul():
+    if nb_tours > 6:
+        liste = []
+        fichier_nul = open(r"Fichier_Nul", "a")
+        fichier_nul.write(liste)
+
+    pass
+
 
 
 #FENETRE
