@@ -10,105 +10,48 @@ https://github.com/uvsq22008953/Projet_Tapatan
 
 import tkinter as tk
 import random
+from tkinter.constants import RIDGE
+from tkinter import StringVar, messagebox
 
-#VARIABLES POSITIONS PIONS
-x1b1=0
-x2b1=0
-y1b1=0
-y2b1=0
-""""""
-x1b2=0
-x2b2=0
-y1b2=0
-y2b2=0
-""""""
-x1b3=0
-x2b3=0
-y1b3=0
-y2b3=0
-""""""
-x1r1=0
-x2r1=0
-y1r1=0
-y2r1=0
-""""""
-x1r2=0
-x2r2=0
-y1r2=0
-y2r2=0
-""""""
-x1r3=0
-x2r3=0
-y1r3=0
-y2r3=0
-""""""
+#VARIABLES POSITIONS PIONS BLEU
+x1b1, x2b1, y1b1, y2b1=0, 0, 0, 0
+x1b2, x2b2, y1b2, y2b2=0, 0, 0, 0
+x1b3, x2b3, y1b3, y2b3=0, 0, 0, 0
+#VARIABLES POSITIONS PIONS ROUGE
+x1r1, x2r1, y1r1, y2r1=0, 0, 0, 0
+x1r2, x2r2, y1r2, y2r2=0, 0, 0, 0
+x1r3, x2r3, y1r3, y2r3=0, 0, 0, 0
+
 #VALEURS QUE L'ON VA MODIFIER
-x1=0
-x2=0
-y1=0
-y2=0
-""""""
+x1, x2, y1, y2=0, 0, 0, 0
+
 nb_tours=1
 # 0 si tour des rouges // 1 si tour des bleus
 tourdejouer=random.randint(0, 1)
+premiertour = tourdejouer
 print(tourdejouer)
-phase_placement=1
-nb_placements_bleu=0
-nb_placements_rouge=0
-case1_libre=True
-case2_libre=True
-case3_libre=True
-case4_libre=True
-case5_libre=True
-case6_libre=True
-case7_libre=True
-case8_libre=True
-case9_libre=True
-case1_couleure=0
-case2_couleure=0
-case3_couleure=0
-case4_couleure=0
-case5_couleure=0
-case6_couleure=0
-case7_couleure=0
-case8_couleure=0
-case9_couleure=0
-pion_b_1=0
-pion_b_2=0
-pion_b_3=0
-pion_r_1=0
-pion_r_2=0
-pion_r_3=0
-jel=0 
-pionr1=0
-pionr2=0
-pionr3=0
-pionb1=0
-pionb2=0
-pionb3=0
-dx=0
-dy=0
+phase_placement, jel, selectionner, dx, dy = 1, 0, 0, 0, 0
+nb_placements_bleu, nb_placements_rouge = 0, 0
+case1_libre, case2_libre, case3_libre, case4_libre, case5_libre=True, True, True, True, True
+case6_libre, case7_libre, case8_libre, case9_libre=True, True, True, True
+case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure = -1, -1, -1, -1, -1
+case6_couleure, case7_couleure, case8_couleure, case9_couleure = -1, -1, -1, -1
+pion_b_1, pion_b_2, pion_b_3 = 0, 0, 0
+pion_r_1, pion_r_2, pion_r_3 = 0, 0, 0
+pionr1, pionr2, pionr3 = 0, 0, 0
+pionb1, pionb2, pionb3 = 0, 0, 0
+winner, score_bleu, score_rouge, score_perdant, score_gagnant = "", 0, 0, 0, 0
 
-selectionner=0
 
 #FONCTIONS
 
 def positionnement(a, z, e, r):
-    global nb_tours
-    global tourdejouer
-    global selectionner
-    global nb_placements_bleu
-    global nb_placements_rouge
-    global pionr1, pionr2, pionr3
-    global pionb1,pionb2,pionb3,pion_b_1,pion_b_2,pion_b_3,pion_r_1,pion_r_2,pion_r_3
-    global x1b1,x2b1,y1b1,y2b1
-    global x1b2,x2b2,y1b2,y2b2
-    global x1b3,x2b3,y1b3,y2b3
-    global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x2r2,y1r2,y2r2
-    global x1r3,x2r3,y1r3,y2r3
-    global jel
-    global dx,dy
+    global nb_tours, tourdejouer, selectionner, nb_placements_bleu, nb_placements_rouge
+    global jel, dx, dy
+    global pionr1, pionr2, pionr3, pion_r_1, pion_r_2, pion_r_3
+    global pionb1, pionb2, pionb3, pion_b_1, pion_b_2, pion_b_3
+    global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, x2b3, y1b3, y2b3
+    global x1r1, x2r1, y1r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, x2r3, y1r3, y2r3
     if nb_tours<=6:
                     if tourdejouer==1:
                         if nb_tours<=2:
@@ -294,29 +237,11 @@ def positionnement(a, z, e, r):
 
 
 def ClicCase(event):
-    global tourdejouer
-    global nb_placements_bleu
-    global nb_placements_rouge
-    global nb_tours
-    global case1_libre
-    global case2_libre
-    global case3_libre
-    global case4_libre
-    global case5_libre
-    global case6_libre
-    global case7_libre
-    global case8_libre
-    global case9_libre
-    global case1_couleure
-    global case2_couleure
-    global case3_couleure
-    global case4_couleure
-    global case5_couleure
-    global case6_couleure
-    global case7_couleure
-    global case8_couleure
-    global case9_couleure
-    global selectionner
+    global tourdejouer, nb_placements_bleu, nb_placements_rouge, nb_tours, selectionner
+    global case1_libre, case2_libre, case3_libre, case4_libre, case5_libre
+    global case6_libre, case7_libre, case8_libre, case9_libre
+    global case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure
+    global case6_couleure, case7_couleure, case8_couleure, case9_couleure
     if nb_tours<=6:
         if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75:
             #case1
@@ -571,25 +496,15 @@ def ClicCase(event):
                 selectionner=0
                 case9_libre=False
                 nb_tours+=1
+    ConditionVictoire()
                 
 
-
-
 def verification1(q,s,d,f):
-    global tourdejouer, nb_tours
+    global tourdejouer, nb_tours, case1_couleure, selectionner, dx, dy, jel
     global case1_libre, case2_libre, case4_libre, case5_libre
-    global case1_couleure
-    global pionr1, pionr2, pionr3
-    global pionb1,pionb2,pionb3
-    global x1b1,x2b1,y1b1,y2b1
-    global x1b2,x2b2,y1b2,y2b2
-    global x1b3,x2b3,y1b3,y2b3
-    global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x2r2,y1r2,y2r2
-    global x1r3,x2r3,y1r3,y2r3
-    global selectionner
-    global dx,dy
-    global jel
+    global pionr1, pionr2, pionr3, pionb1, pionb2, pionb3
+    global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, x2b3, y1b3, y2b3
+    global x1r1, x2r1, y1r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, x2r3, y1r3, y2r3
     if case2_libre==False and case5_libre==False and case4_libre==False:
         nb_tours+=1
     elif case1_libre==False and case1_couleure==1:
@@ -634,19 +549,11 @@ def verification1(q,s,d,f):
         nb_tours+=1
     
 def verification2(q,s,d,f):
-    global tourdejouer, nb_tours
     global case1_libre, case2_libre, case3_libre, case5_libre
-    global case2_couleure
-    global pionr1, pionr2, pionr3
-    global pionb1,pionb2,pionb3
-    global x1b1,x2b1,y1b1,y2b1
-    global x1b2,x2b2,y1b2,y2b2
-    global x1b3,x2b3,y1b3,y2b3
-    global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x2r2,y1r2,y2r2
-    global x1r3,x2r3,y1r3,y2r3
-    global selectionner
-    global dx,dy
+    global tourdejouer, nb_tours, case2_couleure, selectionner, dx, dy, jel
+    global pionr1, pionr2, pionr3, pionb1, pionb2, pionb3
+    global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, x2b3, y1b3, y2b3
+    global x1r1, x2r1, y1r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, x2r3, y1r3, y2r3
     if case1_libre==False and case3_libre==False and case5_libre==False:
         nb_tours+=1
     elif case2_libre==False and case2_couleure==1:
@@ -691,19 +598,11 @@ def verification2(q,s,d,f):
         nb_tours+=1
 
 def verification3(q,s,d,f):
-    global tourdejouer, nb_tours
     global case6_libre, case2_libre, case3_libre, case5_libre
-    global case3_couleure
-    global pionr1, pionr2, pionr3
-    global pionb1,pionb2,pionb3
-    global x1b1,x2b1,y1b1,y2b1
-    global x1b2,x2b2,y1b2,y2b2
-    global x1b3,x2b3,y1b3,y2b3
-    global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x2r2,y1r2,y2r2
-    global x1r3,x2r3,y1r3,y2r3
-    global dx,dy
-    global selectionner
+    global tourdejouer, nb_tours, case3_couleure, selectionner, dx, dy, jel
+    global pionr1, pionr2, pionr3, pionb1, pionb2, pionb3
+    global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, x2b3, y1b3, y2b3
+    global x1r1, x2r1, y1r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, x2r3, y1r3, y2r3
     if case6_libre==False and case2_libre==False and case5_libre==False:
         nb_tours+=1
     elif case3_libre==False and case3_couleure==1:
@@ -749,19 +648,11 @@ def verification3(q,s,d,f):
         nb_tours+=1
 
 def verification4(q,s,d,f):
-    global tourdejouer, nb_tours
     global case1_libre, case5_libre, case7_libre, case4_libre
-    global case4_couleure
-    global pionr1, pionr2, pionr3
-    global pionb1,pionb2,pionb3
-    global x1b1,x2b1,y1b1,y2b1
-    global x1b2,x2b2,y1b2,y2b2
-    global x1b3,x2b3,y1b3,y2b3
-    global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x2r2,y1r2,y2r2
-    global x1r3,x2r3,y1r3,y2r3
-    global dx,dy
-    global selectionner
+    global tourdejouer, nb_tours, case4_couleure, selectionner, dx, dy, jel
+    global pionr1, pionr2, pionr3, pionb1, pionb2, pionb3
+    global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, x2b3, y1b3, y2b3
+    global x1r1, x2r1, y1r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, x2r3, y1r3, y2r3
     if case1_libre==False and case5_libre==False and case7_libre==False:
         nb_tours+=1
     elif case4_libre==False and case4_couleure==1:
@@ -806,19 +697,11 @@ def verification4(q,s,d,f):
         nb_tours+=1
 
 def verification5(q,s,d,f):
-    global tourdejouer, nb_tours
     global case1_libre, case2_libre, case3_libre, case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre
-    global case5_couleure
-    global pionr1, pionr2, pionr3
-    global pionb1,pionb2,pionb3
-    global x1b1,x2b1,y1b1,y2b1
-    global x1b2,x2b2,y1b2,y2b2
-    global x1b3,x2b3,y1b3,y2b3
-    global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x2r2,y1r2,y2r2
-    global dx,dy
-    global x1r3,x2r3,y1r3,y2r3
-    global selectionner
+    global tourdejouer, nb_tours, case5_couleure, selectionner, dx, dy, jel
+    global pionr1, pionr2, pionr3, pionb1, pionb2, pionb3
+    global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, x2b3, y1b3, y2b3
+    global x1r1, x2r1, y1r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, x2r3, y1r3, y2r3
     print("capasse")
     if case1_libre==False and case2_libre==False and case3_libre==False and case4_libre==False and case6_libre==False and case7_libre==False and case8_libre==False and case9_libre==False:
         nb_tours+=1
@@ -865,19 +748,11 @@ def verification5(q,s,d,f):
         nb_tours+=1
 
 def verification6(q,s,d,f):
-    global tourdejouer, nb_tours
     global case3_libre, case5_libre, case6_libre, case9_libre
-    global case6_couleure
-    global pionr1, pionr2, pionr3
-    global pionb1,pionb2,pionb3
-    global x1b1,x2b1,y1b1,y2b1
-    global x1b2,x2b2,y1b2,y2b2
-    global dx,dy
-    global x1b3,x2b3,y1b3,y2b3
-    global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x2r2,y1r2,y2r2
-    global x1r3,x2r3,y1r3,y2r3
-    global selectionner
+    global tourdejouer, nb_tours, case6_couleure, selectionner, dx, dy, jel
+    global pionr1, pionr2, pionr3, pionb1, pionb2, pionb3
+    global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, x2b3, y1b3, y2b3
+    global x1r1, x2r1, y1r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, x2r3, y1r3, y2r3
     print(x2r2,s)
     if case3_libre==False and case5_libre==False and case9_libre==False:
         nb_tours+=1
@@ -924,19 +799,11 @@ def verification6(q,s,d,f):
         nb_tours+=1
 
 def verification7(q,s,d,f):
-    global tourdejouer, nb_tours
     global case4_libre, case7_libre, case8_libre, case5_libre
-    global case7_couleure
-    global pionr1, pionr2, pionr3
-    global pionb1,pionb2,pionb3
-    global x1b1,x2b1,y1b1,y2b1
-    global x1b2,x2b2,y1b2,y2b2
-    global x1b3,x2b3,y1b3,y2b3
-    global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x2r2,y1r2,y2r2
-    global dx,dy
-    global x1r3,x2r3,y1r3,y2r3
-    global selectionner
+    global tourdejouer, nb_tours, case7_couleure, selectionner, dx, dy, jel
+    global pionr1, pionr2, pionr3, pionb1, pionb2, pionb3
+    global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, x2b3, y1b3, y2b3
+    global x1r1, x2r1, y1r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, x2r3, y1r3, y2r3
     if case4_libre==False and case8_libre==False and case5_libre==False:
         nb_tours+=1
     elif case7_libre==False and case7_couleure==1:
@@ -981,19 +848,11 @@ def verification7(q,s,d,f):
         nb_tours+=1
 
 def verification8(q,s,d,f):
-    global tourdejouer, nb_tours
     global case7_libre, case8_libre, case9_libre, case5_libre
-    global case8_couleure
-    global pionr1, pionr2, pionr3
-    global pionb1,pionb2,pionb3
-    global x1b1,x2b1,y1b1,y2b1
-    global x1b2,x2b2,y1b2,y2b2
-    global x1b3,x2b3,y1b3,y2b3
-    global dx,dy
-    global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x2r2,y1r2,y2r2
-    global x1r3,x2r3,y1r3,y2r3
-    global selectionner
+    global tourdejouer, nb_tours, case8_couleure, selectionner, dx, dy, jel
+    global pionr1, pionr2, pionr3, pionb1, pionb2, pionb3
+    global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, x2b3, y1b3, y2b3
+    global x1r1, x2r1, y1r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, x2r3, y1r3, y2r3
     if case7_libre==False and case9_libre==False and case5_libre==False:
         nb_tours+=1
     elif case8_libre==False and case8_couleure==1:
@@ -1037,21 +896,12 @@ def verification8(q,s,d,f):
     else:
         nb_tours+=1
 
-
 def verification9(q,s,d,f):
-    global tourdejouer, nb_tours
     global case6_libre, case8_libre, case9_libre, case5_libre
-    global case9_couleure
-    global pionr1, pionr2, pionr3
-    global pionb1,pionb2,pionb3
-    global x1b1,x2b1,y1b1,y2b1
-    global x1b2,x2b2,y1b2,y2b2
-    global x1b3,x2b3,y1b3,y2b3
-    global x1r1,x2r1,y1r1,y2r1
-    global x1r2,x2r2,y1r2,y2r2
-    global dx,dy
-    global x1r3,x2r3,y1r3,y2r3
-    global selectionner
+    global tourdejouer, nb_tours, case9_couleure, selectionner, dx, dy, jel
+    global pionr1, pionr2, pionr3, pionb1, pionb2, pionb3
+    global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, x2b3, y1b3, y2b3
+    global x1r1, x2r1, y1r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, x2r3, y1r3, y2r3
     if case6_libre==False and case8_libre==False and case5_libre==False:
         nb_tours+=1
     elif case9_libre==False and case9_couleure==1:
@@ -1096,12 +946,114 @@ def verification9(q,s,d,f):
         nb_tours+=1
 
 
+def Initialisation():
+    global x1, x2, y1, y2, nb_tours, tourdejouer, phase_placement, nb_placements_rouge, nb_placements_bleu, case1_libre, case2_libre, case3_libre
+    global case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre, selectionner, winner, score_bleu, score_rouge, jel, dx, dy, canvas
+    global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, y1b3, x2b3, y2b3
+    global x1r1, y1r1, x2r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, y1r3, x2r3, y2r3
+    global case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure
+    global pionr1, pionr2, pionr3, pion_r_1, pion_r_2, pion_r_3, pionb1, pionb2, pionb3, pion_b_1, pion_b_2, pion_b_3 , score_perdant, score_gagnant, premiertour
+    if premiertour == 1:
+        tourdejouer, premiertour = 0, 0
+    else:
+        tourdejouer, premiertour = 1 , 1
+    x1, x2, y1, y2=0, 0, 0, 0
+    nb_placements_bleu, nb_placements_rouge, phase_placement, jel, selectionner, nb_tours, dx, dy = 0, 0, 1, 0, 0, 1, 0, 0
+    case1_libre, case2_libre, case3_libre, case4_libre, case5_libre=True, True, True, True, True
+    case6_libre, case7_libre, case8_libre, case9_libre=True, True, True, True
+    case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure = -1, -1, -1, -1, -1
+    case6_couleure, case7_couleure, case8_couleure, case9_couleure = -1, -1, -1, -1
+    pion_b_1, pion_b_2, pion_b_3, pionb1, pionb2, pionb3 = 0, 0, 0, 0, 0, 0
+    pion_r_1, pion_r_2, pion_r_3, pionr1, pionr2, pionr3 = 0, 0, 0, 0, 0, 0
+    #VARIABLES POSITIONS PIONS BLEU
+    x1b1, x2b1, y1b1, y2b1 = 0, 0, 0, 0
+    x1b2, x2b2, y1b2, y2b2 = 0, 0, 0, 0
+    x1b3, x2b3, y1b3, y2b3 = 0, 0, 0, 0
+    #VARIABLES POSITIONS PIONS ROUGE
+    x1r1, x2r1, y1r1, y2r1 = 0, 0, 0, 0
+    x1r2, x2r2, y1r2, y2r2 = 0, 0, 0, 0
+    x1r3, x2r3, y1r3, y2r3 = 0, 0, 0, 0
+    canvas.bind('<ButtonPress-1>', ClicCase)
+    affichage_rouge.config(text = score_rouge)
+    affichage_bleu.config(text = score_bleu)
+    ResetPion()
+
+
+def ResetPion():
+    canvas.delete("all")
+    ligne1 = canvas.create_line(50, 50, 750, 750)
+    ligne2 = canvas.create_line(400, 50, 400, 750)
+    ligne3 = canvas.create_line(750, 50, 50, 750)
+    ligne4 = canvas.create_line(50, 400, 750, 400)
+    ligneh1 = canvas.create_line(50, 50, 750, 50)
+    ligneh2 = canvas.create_line(50, 750, 750, 750)
+    lignev1 = canvas.create_line(50, 50, 50, 750)
+    lignev2 = canvas.create_line(750, 50, 750, 750)
+
+
+def ConditionVictoire():
+    global score_rouge, score_bleu
+    if (x1b1 == x1b2 and x1b2 == x1b3 and x1b1 != 0) or (y1b1 == y1b2 and y1b2 == y1b3 and y1b1 != 0):
+        score_bleu += 1
+        canvas.bind('<ButtonPress-1>', NouvelleManche)
+    elif ((x1b1 == 25 and y1b1 == 25) and (x1b2 == 375 and y1b2 == 375) and (x1b3 == 725 and y1b3 == 725)):
+        score_bleu += 1
+        canvas.bind('<ButtonPress-1>', NouvelleManche)
+    elif ((x1b1 == 725 and y1b1 == 25) and (x1b2 == 375 and y1b2 == 375) and (x1b3 == 25 and y1b3 == 725)):
+        score_bleu += 1
+        canvas.bind('<ButtonPress-1>', NouvelleManche)
+    elif (x1r1 == x1r2 and x1r2 == x1r3 and x1r1 != 0) or (y1r1 == y1r2 and y1r2 == y1r3 and y1r1 != 0):
+        score_rouge += 1
+        canvas.bind('<ButtonPress-1>', NouvelleManche)
+    elif ((x1r1 == 25 and y1r1 == 25) and (x1r2 == 375 and y1r2 == 375) and (x1r3 == 725 and y1r3 == 725)):
+        score_rouge += 1
+        canvas.bind('<ButtonPress-1>', NouvelleManche)
+    elif ((x1r1 == 725 and y1r1 == 25) and (x1r2 == 375 and y1r2 == 375) and (x1r3 == 25 and y1r3 == 725)):
+        score_rouge += 1
+        canvas.bind('<ButtonPress-1>', NouvelleManche)
+    affichage_rouge.config(text = score_rouge)
+    affichage_bleu.config(text = score_bleu)
+    Victoire()
+
+
+def Victoire():
+    global winner, score_bleu, score_rouge, score_gagnant, score_perdant
+    if score_bleu == 3 :
+        winner = "bleu"
+        score_gagnant = score_bleu
+        score_perdant = score_rouge
+    elif score_rouge == 3 :
+        winner = "rouge"
+        score_gagnant = score_rouge
+        score_perdant = score_bleu
+    if winner != "":
+        tk.messagebox.showinfo("Gagnant", "Les " + winner + " ont gagnés")
+        canvas.bind('<ButtonPress-1>', NouvellePartie)
+
+
+def NouvelleManche(event):
+    Initialisation()
+
+
+def NouvellePartie(event):
+    NewGame()
+
+
+def NewGame():
+    global winner, score_bleu, score_rouge, score_perdant, score_gagnant
+    winner, score_bleu, score_rouge, score_perdant, score_gagnant = "", 0, 0, 0, 0
+    Initialisation()
+
+
+#FENETRE
+
 root = tk.Tk()
 root.title("Jeu du Tapatan")
 canvas = tk.Canvas(root, width=800, height=800, borderwidth=0, highlightthickness=0, bg="grey")
 canvas.pack(padx =1, pady =1)
-canvas.grid()
+canvas.grid(column = 0, row = 0, rowspan = 9, columnspan = 9)
 canvas.bind('<ButtonPress-1>', ClicCase)
+
 ligne1 = canvas.create_line(50, 50, 750, 750)
 ligne2 = canvas.create_line(400, 50, 400, 750)
 ligne3 = canvas.create_line(750, 50, 50, 750)
@@ -1110,5 +1062,27 @@ ligneh1 = canvas.create_line(50, 50, 750, 50)
 ligneh2 = canvas.create_line(50, 750, 750, 750)
 lignev1 = canvas.create_line(50, 50, 50, 750)
 lignev2 = canvas.create_line(750, 50, 750, 750)
+
+frame1 = tk.Frame(root, relief = RIDGE, bd = 12)
+frame1.grid(column = 10, row = 2)
+frame2 = tk.Frame(root, relief = RIDGE, bd = 12)
+frame2.grid(column = 10, row = 4)
+
+score = tk.Label(frame1, width = 14, height = 1, text = "Score", font = ("helvetica", "20"))
+score.grid(column = 0, row = 0, columnspan = 4)
+
+rouge = tk.Label(frame1, width = 7, text = "Rouge", font = ("helvetica", "20"))
+rouge.grid(column = 0, row = 1)
+affichage_rouge = tk.Label(frame1, width = 7, text = score_rouge, font = ("helvetica", "20"))
+affichage_rouge.grid(column = 1, row = 1)
+
+bleu = tk.Label(frame1, width = 7, text = "Bleu", font = ("helvetica", "20"))
+bleu.grid(column = 0, row = 2, columnspan = 1)
+affichage_bleu = tk.Label(frame1, width = 7, text = score_bleu, font = ("helvetica", "20"))
+affichage_bleu.grid(column = 1, row = 2)
+
+new_game = tk.Button(frame2, width = 14, text = "Nouvelle Partie", font = ("helvetica", "20"), command = NewGame)
+new_game.grid(column = 0, row = 0)
+
 
 root.mainloop()
