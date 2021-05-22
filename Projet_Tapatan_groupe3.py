@@ -1053,6 +1053,8 @@ canvas = tk.Canvas(root, width=800, height=800, borderwidth=0, highlightthicknes
 canvas.pack(padx =1, pady =1)
 canvas.grid(column = 0, row = 0, rowspan = 9, columnspan = 9)
 canvas.bind('<ButtonPress-1>', ClicCase)
+canvas2 = tk.Canvas(root, width=350, height=800, borderwidth=0, highlightthickness=0, bg="grey")
+canvas2.grid(column = 10, row = 0, rowspan = 9, columnspan = 3)
 
 ligne1 = canvas.create_line(50, 50, 750, 750)
 ligne2 = canvas.create_line(400, 50, 400, 750)
