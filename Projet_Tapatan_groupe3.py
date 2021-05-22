@@ -82,6 +82,8 @@ pionb3=0
 
 selectionner=0
 
+emplacement = [case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure]
+
 #FONCTIONS
 
 def positionnement(a, z, e, r):
@@ -221,11 +223,13 @@ def ClicCase(event):
                 positionnement(25,25,75,75)
                 nb_tours+=1
                 case1_couleure=1
+                emplacement [0] = 1
                 case1_libre=False
             else:
                 positionnement(25,25,75,75)
                 nb_tours+=1
                 case1_couleure=0
+                emplacement [0] = 0
                 case1_libre=False
         elif event.x>=375 and event.x<=425 and event.y>=25 and event.y<=75:
             #case2
@@ -233,11 +237,13 @@ def ClicCase(event):
                 positionnement(375,25,425,75)
                 nb_tours+=1
                 case2_couleure=1
+                emplacement [1] = 1
                 case2_libre=False
             else:
                 positionnement(375,25,425,75)
                 nb_tours+=1
                 case2_couleure=0
+                emplacement [1] = 0
                 case2_libre=False
         elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75:
             #case3
@@ -245,11 +251,13 @@ def ClicCase(event):
                 positionnement(725,25,775,75)
                 nb_tours+=1
                 case3_couleure=1
+                emplacement [2] = 1
                 case3_libre=False
             else:
                 positionnement(725,25,775,75)
                 nb_tours+=1
                 case3_couleure=0
+                emplacement [2] = 0
                 case3_libre=False
         elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425:
             #case4
@@ -257,11 +265,13 @@ def ClicCase(event):
                 positionnement(25,375,75,425)
                 nb_tours+=1
                 case4_couleure=1
+                emplacement [3] = 1
                 case4_libre=False
             else:
                 positionnement(25,375,75,425)
                 nb_tours+=1
                 case4_couleure=0
+                emplacement [3] = 0
                 case4_libre=False
         elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425:
             #case5
@@ -269,11 +279,13 @@ def ClicCase(event):
                 positionnement(375,375,425,425)
                 nb_tours+=1
                 case5_couleure=1
+                emplacement [4] = 1
                 case5_libre=False
             else:
                 positionnement(375,375,425,425)
                 nb_tours+=1
                 case5_couleure=0
+                emplacement [4] = 0
                 case5_libre=False
         elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425:
             #case6
@@ -281,11 +293,13 @@ def ClicCase(event):
                 positionnement(725,375,775,425)
                 nb_tours+=1
                 case6_couleure=1
+                emplacement [5] = 1
                 case6_libre=False
             else:
                 positionnement(725,375,775,425)
                 nb_tours+=1
-                case5_couleure=0
+                case6_couleure=0
+                emplacement [5] = 0
                 case5_libre=False
         elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775:
             #case7
@@ -293,11 +307,13 @@ def ClicCase(event):
                 positionnement(25,725,75,775)
                 nb_tours+=1
                 case7_couleure=1
+                emplacement [6] = 1
                 case7_libre=False
             else:
                positionnement(25,725,75,775)
                nb_tours+=1
                case7_couleure=0
+               emplacement [6] = 0
                case7_libre=False 
         elif event.x>=375 and event.x<=425 and event.y>=725 and event.y<=775:
             #case8
@@ -306,22 +322,26 @@ def ClicCase(event):
                 nb_tours+=1
                 case8_libre=False
                 case8_couleure=1
+                emplacement [7] = 1
             else:
                 positionnement(375,725,425,775)
                 nb_tours+=1
                 case8_libre=False
-                case8_couleure=1
+                case8_couleure=0
+                emplacement [7] = 0
         elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775:
             #case9
             if tourdejouer==1:
                 positionnement(725,725,775,775)
                 nb_tours+=1
                 case9_couleure=1
+                emplacement [8] = 1
                 case9_libre=False
             else:
                 positionnement(725,725,775,775)
                 nb_tours+=1
                 case9_couleure=0
+                emplacement [8] = 0
                 case9_libre=False
     elif nb_tours>6 and nb_tours%2==1:
         if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75:
@@ -544,7 +564,7 @@ def verification3(q,s,d,f):
         else :
             pionb3=1
             selectionner=3
-    elif case3_libre==False and case3_couleure==0:
+    elif case3_libre==False and case3_couleure== 0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=3
@@ -658,7 +678,7 @@ def verification6(q,s,d,f):
         else :
             pionb3=1
             selectionner=6
-    elif case6_libre==False and case6_couleure==0:
+    elif case6_libre==False and case6_couleure== 0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=6
@@ -696,7 +716,7 @@ def verification7(q,s,d,f):
         else :
             pionb3=1
             selectionner=7
-    elif case7_libre==False and case7_couleure==0:
+    elif case7_libre==False and case7_couleure== 0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=7
@@ -734,7 +754,7 @@ def verification8(q,s,d,f):
         else :
             pionb3=1
             selectionner=8
-    elif case8_libre==False and case8_couleure==0:
+    elif case8_libre==False and case8_couleure== 0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=8
@@ -773,7 +793,7 @@ def verification9(q,s,d,f):
         else :
             pionb3=1
             selectionner=9
-    elif case9_libre==False and case9_couleure==0:
+    elif case9_libre==False and case9_couleure== 0:
         if x1r1==q and x2r1==s and y1r1==d and y2r1==f:
             pionr1=1
             selectionner=9
@@ -786,14 +806,12 @@ def verification9(q,s,d,f):
     else:
         nb_tours+=1
 
-emplacement = [[case1_libre, case2_libre, case3_libre, case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre],[case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure]]
+emplacement = [case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure]
 
 def Sauvegarder():
     pickle.dump (emplacement, open("sauvegarde", "wb"))
 
 def Charger ():
-    global case1_libre, case2_libre, case3_libre, case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre
-    global case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure
     global nb_tours
     global emplacement
     global x1b1,x2b1,y1b1,y2b1
@@ -802,95 +820,97 @@ def Charger ():
     global x1r1,x2r1,y1r1,y2r1
     global x1r2,x1r2,y1r2,y2r2
     global x1r3,x2r3,y1r3,y2r3
-    
-
-    
 
     emplacement = pickle.load (open("sauvegarde", "rb"))
 
-    if case1_couleure == 0 : 
+    if emplacement[0] == 0: 
         positionnement(25,25,75,75)
-        pion_b_1 = canvas.create_rectangle(x1b1,x2b1,y1b1,y2b1, fill="blue", width=2)
+        canvas.create_rectangle(x1b1,x2b1,y1b1,y2b1, fill="blue", width=2)
         nb_tours += 1 
-    elif case1_couleure == 1 : 
-        positionnement(25,25,75,75) 
-        pion_r_1 = canvas.create_rectangle(x1r1,x2r1,y1r1,y2r1, fill="red", width=2)
+    if emplacement[0] == 1 : 
+        positionnement(25,25,75,75)
+        canvas.create_rectangle(x1r1,x2r1,y1r1,y2r1, fill="red", width=2)
         nb_tours += 1 
+  
 
-    if case2_couleure == 0 :
-        positionnement(375,25,425,75)  
-        pion_b_2 = canvas.create_rectangle(x1b2,x2b2,y1b2,y2b2, fill="blue", width=2)
-        nb_tours += 1 
-    elif case2_couleure == 1 :
+    if emplacement[1] == 0 :  
         positionnement(375,25,425,75)
-        pion_r_2 = canvas.create_rectangle(x1r2,x1r2,y1r2,y2r2, fill="red", width=2)
-        nb_tours += 1
-
-    if case3_couleure == 0 :
-        positionnement(725,25,775,75)
-        pion_b_3 = canvas.create_rectangle(x1b3,x2b3,y1b3,y2b3, fill="blue", width=2)
-        nb_tours += 1
-    elif case3_couleure == 1 :
-        positionnement(725,25,775,75)
-        pion_r_3 = canvas.create_rectangle(x1r3,x2r3,y1r3,y2r3, fill="red", width=2)
-        nb_tours += 1
-    
-    if case4_couleure  == 0 :
-        positionnement(25,375,75,425)
-        pion_b_1 = canvas.create_rectangle(x1b1, x2b1, y1b1, y2b1, fill="blue", width=2)
-        nb_tours += 1
-    elif case4_couleure  == 1 : 
-        positionnement(25,375,75,425)
-        pion_r_1 = canvas.create_rectangle(x1r1, x2r1, y1r1, y2r1, fill="red", width=2)
-        nb_tours += 1
-
-    if case5_couleure == 0 :
-        positionnement(375,375,425,425)
-        pion_b_2 = canvas.create_rectangle(x1b2, x2b2, y1b2, y2b2, fill="blue", width=2)
+        canvas.create_rectangle(x1b2,x2b2,y1b2,y2b2, fill="blue", width=2)
         nb_tours += 1 
-    elif case5_couleure  == 1 :
+    if emplacement[1] == 1 :
+        positionnement(375,25,425,75)
+        canvas.create_rectangle(x1r2,x1r2,y1r2,y2r2, fill="red", width=2)
+        nb_tours += 1
+   
+
+    if emplacement[2] == 0:
+        positionnement(725,25,775,75)
+        canvas.create_rectangle(x1b3,x2b3,y1b3,y2b3, fill="blue", width=2)
+        nb_tours += 1
+    if emplacement[2]== 1:
+        positionnement(725,25,775,75)
+        canvas.create_rectangle(x1r3,x2r3,y1r3,y2r3, fill="red", width=2)
+        nb_tours += 1
+  
+    
+    if emplacement[3]  == 0:
+        positionnement(25,375,75,425)
+        canvas.create_rectangle(x1b1,x2b1,y1b1,y2b1, fill="blue", width=2)
+        nb_tours += 1
+    if emplacement[3]  == 1: 
+        positionnement(25,375,75,425)
+        canvas.create_rectangle(x1r1,x2r1,y1r1,y2r1, fill="red", width=2)
+        nb_tours += 1
+ 
+
+    if emplacement[4] == 0 :
         positionnement(375,375,425,425)
-        pion_r_2 = canvas.create_rectangle(x1r2, x2r2, y1r2, y2r2, fill="red", width=2)
+        canvas.create_rectangle(x1b2,x2b2,y1b2,y2b2, fill="blue", width=2)
+        nb_tours += 1 
+    if emplacement[4]  == 1:
+        positionnement(375,375,425,425)
+        canvas.create_rectangle(x1r2,x1r2,y1r2,y2r2, fill="red", width=2)
         nb_tours += 1
+   
 
-    if case6_couleure  == 0 :
+    if emplacement[5]  == 0 :
         positionnement(725,375,775,425)
-        pion_b_3 = canvas.create_rectangle(x1b3, x2b3, y1b3, y2b3, fill="blue", width=2)
+        canvas.create_rectangle(x1b3,x2b3,y1b3,y2b3, fill="blue", width=2)
         nb_tours += 1
-    elif case6_couleure  == 1 :
+    if emplacement[5]  == 1:
         positionnement(725,375,775,425)
-        pion_r_3 = canvas.create_rectangle(x1r3, x2r3, y1r3, y2r3, fill="red", width=2)
+        canvas.create_rectangle(x1r3,x2r3,y1r3,y2r3, fill="red", width=2)
         nb_tours += 1
+  
     
-    if case7_couleure  == 0 :
+    if emplacement[6]  == 0:
         positionnement(25,725,75,775)
-        pion_b_1 = canvas.create_rectangle(x1b1, x2b1, y1b1, y2b1, fill="blue", width=2)
+        canvas.create_rectangle(x1b1,x2b1,y1b1,y2b1, fill="blue", width=2)
         nb_tours+= 1
-    elif case7_couleure  == 1 :
+    if emplacement[6]  == 1 :
         positionnement(25,725,75,775)
-        pion_r_1 = canvas.create_rectangle(x1r1, x2r1, y1r1, y2r1, fill="red", width=2)
+        canvas.create_rectangle(x1r1,x2r1,y1r1,y2r1, fill="red", width=2)
         nb_tours +=1
-    
-    if case8_couleure  == 0 :
-        positionnement(375,725,425,775)
-        (375,725,425,775)
-        pion_b_2 = canvas.create_rectangle(x1b2, x2b2, y1b2, y2b2, fill="blue", width=2)
-        nb_tours += 1
-    elif case8_couleure  == 1 :
-        positionnement(375,725,425,775)
-        (375,725,425,775)
-        pion_r_2 = canvas.create_rectangle(x1r2, x2r2, y1r2, y2r2, fill="red", width=2)
-        nb_tours += 1
+ 
 
-    if case9_couleure == 0 :
-        positionnement(725,725,775,775)
-        pion_b_3 = canvas.create_rectangle(x1b3, x2b3, y1b3, y2b3, fill="blue", width=2)
+    if emplacement[7]  == 0:
+        positionnement(375,725,425,775)
+        canvas.create_rectangle(x1b2,x2b2,y1b2,y2b2, fill="blue", width=2)
         nb_tours += 1
-    elif case9_couleure == 1 :
-        positionnement(725,725,775,775)
-        pion_r_3 = canvas.create_rectangle(x1r3, x2r3, y1r3, y2r3, fill="red", width=2)
+    if emplacement[7]  == 1 :
+        positionnement(375,725,425,775)
+        canvas.create_rectangle(x1r2,x1r2,y1r2,y2r2, fill="red", width=2)
         nb_tours += 1
-    
+   
+
+    if emplacement[8] == 0 :
+        positionnement(725,725,775,775)
+        canvas.create_rectangle(x1b3,x2b3,y1b3,y2b3, fill="blue", width=2)
+        nb_tours += 1
+    if emplacement[8] == 1:
+        positionnement(725,725,775,775)
+        canvas.create_rectangle(x1r3,x2r3,y1r3,y2r3, fill="red", width=2)
+        nb_tours += 1
 
     return(emplacement)
 
