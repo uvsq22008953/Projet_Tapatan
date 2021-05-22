@@ -1206,16 +1206,18 @@ ligneh1 = canvas.create_line(50, 50, 750, 50)
 ligneh2 = canvas.create_line(50, 750, 750, 750)
 lignev1 = canvas.create_line(50, 50, 50, 750)
 lignev2 = canvas.create_line(750, 50, 750, 750)
-sauvegarde = tk.Button(root, text= "Sauvegarder", bg = "grey", command=Sauvegarder)
-charger = tk.Button(root, text= "Charger", bg = "grey", command=Charger)
-canvas.grid(row=0, column=0, columnspan=4, rowspan=6)
-sauvegarde.grid(row=6, column=1)
-charger.grid(row=6, column=2)
+
 
 frame1 = tk.Frame(root, relief = RIDGE, bd = 12)
 frame1.grid(column = 10, row = 2)
 frame2 = tk.Frame(root, relief = RIDGE, bd = 12)
 frame2.grid(column = 10, row = 4)
+frame3 = tk.Frame(root, relief = RIDGE, bd = 12)
+frame3.grid(column = 10, row = 6)
+frame4 = tk.Frame(root, relief = RIDGE, bd = 12)
+frame4.grid(column = 10, row = 8)
+
+
 
 score = tk.Label(frame1, width = 14, height = 1, text = "Score", font = ("helvetica", "20"))
 score.grid(column = 0, row = 0, columnspan = 4)
@@ -1233,5 +1235,9 @@ affichage_bleu.grid(column = 1, row = 2)
 new_game = tk.Button(frame2, width = 14, text = "Nouvelle Partie", font = ("helvetica", "20"), command = NewGame)
 new_game.grid(column = 0, row = 0)
 
+sauvegarde = tk.Button(frame3, text= "Sauvegarder", font =("helvetica","20") , command=Sauvegarder)
+charger = tk.Button(frame4, text= "Charger", font =("helvetica","20"), command=Charger)
+sauvegarde.grid(column = 0, row = 3)
+charger.grid(column = 0, row = 2)
 
 root.mainloop()
