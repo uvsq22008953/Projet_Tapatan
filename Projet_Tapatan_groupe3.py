@@ -1004,84 +1004,118 @@ def verification9(q,s,d,f):
 
 
 def Sauvegarder():
-    emplacement = [case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure]
+    emplacement = [case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure, nb_tours]
     pickle.dump (emplacement, open("sauvegarde", "wb"))
 
 
 def Charger ():
     global nb_tours, emplacement
-    global x1b1, x2b1, y1b1, y2b1
-    global x1b2, x2b2, y1b2, y2b2
-    global x1b3, x2b3, y1b3, y2b3
-    global x1r1, x2r1, y1r1, y2r1
-    global x1r2, x1r2, y1r2, y2r2
-    global x1r3, x2r3, y1r3, y2r3
+    global case1_libre, case2_libre, case3_libre, case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre
+    nb_tours >= 6
 
     emplacement = pickle.load (open("sauvegarde", "rb"))
     print("emplacement charger", emplacement)
 
     if emplacement[0] == 1 : 
         canvas.create_rectangle(25,25,75,75, fill="blue", width=2)
+        case1_libre = False
         nb_tours += 1 
     elif emplacement[0] == 0 : 
         canvas.create_rectangle(25,25,75,75, fill="red", width=2)
+        case1_libre = False
         nb_tours += 1 
+    elif emplacement[0] == -1 :
+        case1_libre = True
+
 
     if emplacement[1] == 1 :  
         canvas.create_rectangle(375,25,425,75, fill="blue", width=2)
+        case2_libre = False
         nb_tours += 1 
     elif emplacement[1] == 0 :
         canvas.create_rectangle(375,25,425,75, fill="red", width=2)
+        case2_libre = False
         nb_tours += 1
+    elif emplacement[1] == -1 :
+        case2_libre = True
 
     if emplacement[2] == 1 :
         canvas.create_rectangle(725,25,775,75, fill="blue", width=2)
+        case3_libre = False
         nb_tours += 1
     elif emplacement[2] == 0 :
         canvas.create_rectangle(725,25,775,75, fill="red", width=2)
+        case3_libre = False
         nb_tours += 1
+    elif emplacement[2] == -1 :
+        case3_libre = True
+        
     
     if emplacement[3] == 1 :
         canvas.create_rectangle(25,375,75,425, fill="blue", width=2)
+        case4_libre = False
         nb_tours += 1
     elif emplacement[3] == 0 : 
         canvas.create_rectangle(25,375,75,425, fill="red", width=2)
+        case4_libre = False
         nb_tours += 1
+    elif emplacement[3] == -1 :
+        case4_libre = True
 
     if emplacement[4] == 1 :
         canvas.create_rectangle(375,375,425,425, fill="blue", width=2)
+        case5_libre = False
         nb_tours += 1 
     elif emplacement[4] == 0 :
         canvas.create_rectangle(375,375,425,425, fill="red", width=2)
+        case5_libre = False
         nb_tours += 1
+    elif emplacement[4] == -1 :
+        case5_libre = True
 
     if emplacement[5] == 1 :
         canvas.create_rectangle(725,375,775,425, fill="blue", width=2)
+        case6_libre = False
         nb_tours += 1
     elif emplacement[5] == 0 :
         canvas.create_rectangle(725,375,775,425, fill="red", width=2)
+        case6_libre = False
         nb_tours += 1
+    elif emplacement[5] == -1 :
+        case6_libre = True
     
     if emplacement[6] == 1 : 
         canvas.create_rectangle(25,725,75,775, fill="blue", width=2)
+        case7_libre = False
         nb_tours+= 1
     elif emplacement[6] == 0 :
         canvas.create_rectangle(25,725,75,775, fill="red", width=2)
+        case7_libre = False
         nb_tours +=1
+    elif emplacement[6] == -1 :
+        case7_libre = True
 
     if emplacement[7] == 1 :
         canvas.create_rectangle(375,725,425,775, fill="blue", width=2)
+        case8_libre = False
         nb_tours += 1
     elif emplacement[7] == 0 :
         canvas.create_rectangle(375,725,425,775, fill="red", width=2)
+        case8_libre = False
         nb_tours += 1
+    elif emplacement[7] == -1 :
+        case8_libre = True
 
     if emplacement[8] == 1 :
         canvas.create_rectangle(725,725,775,775, fill="blue", width=2)
+        case9_libre = False
         nb_tours += 1
     elif emplacement[8] == 0 :
         canvas.create_rectangle(725,725,775,775, fill="red", width=2)
+        case9_libre = False
         nb_tours += 1
+    elif emplacement[8] == -1 :
+        case9_libre = True
     
     return(emplacement)
 
