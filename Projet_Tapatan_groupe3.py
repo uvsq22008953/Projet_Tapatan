@@ -12,6 +12,7 @@ import tkinter as tk
 import random
 from tkinter.constants import RIDGE
 from tkinter import messagebox
+import pickle
 
 #VARIABLES POSITIONS PIONS BLEU
 x1b1, x2b1, y1b1, y2b1=0, 0, 0, 0
@@ -39,10 +40,9 @@ pion_b_1, pion_b_2, pion_b_3 = 0, 0, 0
 pion_r_1, pion_r_2, pion_r_3 = 0, 0, 0
 pionr1, pionr2, pionr3 = 0, 0, 0
 pionb1, pionb2, pionb3 = 0, 0, 0
-winner, score_bleu, score_rouge, score_perdant, score_gagnant = "", 0, 0, 0, 0
+winner, score_bleu, score_rouge, check1, check2 = "", 0, 0, 0, 0
 fichier_nul = open(r"Fichier_Nul.txt", "w")
-line1, line2, cpt = 0, 0, 0
-check1, check2 = 0, 1
+emplacement = [case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure]
 
 
 #FONCTIONS
@@ -1003,14 +1003,117 @@ def verification9(q,s,d,f):
         nb_tours+=1
 
 
+def Sauvegarder():
+    emplacement = [case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure]
+    pickle.dump (emplacement, open("sauvegarde", "wb"))
+
+
+def Charger ():
+    global nb_tours, emplacement
+    global x1b1, x2b1, y1b1, y2b1
+    global x1b2, x2b2, y1b2, y2b2
+    global x1b3, x2b3, y1b3, y2b3
+    global x1r1, x2r1, y1r1, y2r1
+    global x1r2, x1r2, y1r2, y2r2
+    global x1r3, x2r3, y1r3, y2r3
+
+    emplacement = pickle.load (open("sauvegarde", "rb"))
+    print("emplacement charger", emplacement)
+
+    if emplacement[0] == 1: 
+        positionnement(25,25,75,75)
+        canvas.create_rectangle(x1b1,x2b1,y1b1,y2b1, fill="blue", width=2)
+        nb_tours += 1 
+    elif emplacement[0] == 0 : 
+        positionnement(25,25,75,75)
+        canvas.create_rectangle(x1r1,x2r1,y1r1,y2r1, fill="red", width=2)
+        nb_tours += 1 
+
+    if emplacement[1] == 1 :  
+        positionnement(375,25,425,75)
+        canvas.create_rectangle(x1b2,x2b2,y1b2,y2b2, fill="blue", width=2)
+        nb_tours += 1 
+    elif emplacement[1] == 0 :
+        positionnement(375,25,425,75)
+        canvas.create_rectangle(x1r2,x1r2,y1r2,y2r2, fill="red", width=2)
+        nb_tours += 1
+
+    if emplacement[2] == 1:
+        positionnement(725,25,775,75)
+        canvas.create_rectangle(x1b3,x2b3,y1b3,y2b3, fill="blue", width=2)
+        nb_tours += 1
+    elif emplacement[2]== 0:
+        positionnement(725,25,775,75)
+        canvas.create_rectangle(x1r3,x2r3,y1r3,y2r3, fill="red", width=2)
+        nb_tours += 1
+    
+    if emplacement[3]  == 1:
+        positionnement(25,375,75,425)
+        canvas.create_rectangle(x1b1,x2b1,y1b1,y2b1, fill="blue", width=2)
+        nb_tours += 1
+    elif emplacement[3]  == 0: 
+        positionnement(25,375,75,425)
+        canvas.create_rectangle(x1r1,x2r1,y1r1,y2r1, fill="red", width=2)
+        nb_tours += 1
+
+    if emplacement[4] == 1 :
+        positionnement(375,375,425,425)
+        canvas.create_rectangle(x1b2,x2b2,y1b2,y2b2, fill="blue", width=2)
+        nb_tours += 1 
+    elif emplacement[4]  == 0:
+        positionnement(375,375,425,425)
+        canvas.create_rectangle(x1r2,x1r2,y1r2,y2r2, fill="red", width=2)
+        nb_tours += 1
+
+    if emplacement[5]  == 1:
+        positionnement(725,375,775,425)
+        canvas.create_rectangle(x1b3,x2b3,y1b3,y2b3, fill="blue", width=2)
+        nb_tours += 1
+    elif emplacement[5]  == 0:
+        positionnement(725,375,775,425)
+        canvas.create_rectangle(x1r3,x2r3,y1r3,y2r3, fill="red", width=2)
+        nb_tours += 1
+    
+    if emplacement[6]  == 1:
+        positionnement(25,725,75,775)
+        canvas.create_rectangle(x1b1,x2b1,y1b1,y2b1, fill="blue", width=2)
+        nb_tours+= 1
+    elif emplacement[6]  == 0:
+        positionnement(25,725,75,775)
+        canvas.create_rectangle(x1r1,x2r1,y1r1,y2r1, fill="red", width=2)
+        nb_tours +=1
+
+    if emplacement[7]  == 1:
+        positionnement(375,725,425,775)
+        canvas.create_rectangle(x1b2,x2b2,y1b2,y2b2, fill="blue", width=2)
+        nb_tours += 1
+    elif emplacement[7]  == 0 :
+        positionnement(375,725,425,775)
+        canvas.create_rectangle(x1r2,x1r2,y1r2,y2r2, fill="red", width=2)
+        nb_tours += 1
+
+    if emplacement[8] == 1:
+        positionnement(725,725,775,775)
+        canvas.create_rectangle(x1b3,x2b3,y1b3,y2b3, fill="blue", width=2)
+        nb_tours += 1
+    elif emplacement[8] == 0:
+        positionnement(725,725,775,775)
+        canvas.create_rectangle(x1r3,x2r3,y1r3,y2r3, fill="red", width=2)
+        nb_tours += 1
+    
+    return(emplacement)
+
+
+
+
 def Initialisation():
     global x1, x2, y1, y2, nb_tours, tourdejouer, phase_placement, nb_placements_rouge, nb_placements_bleu, case1_libre, case2_libre, case3_libre
     global case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre, selectionner, winner, score_bleu, score_rouge, jel, dx, dy, canvas
     global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, y1b3, x2b3, y2b3
     global x1r1, y1r1, x2r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, y1r3, x2r3, y2r3
     global case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure
-    global pionr1, pionr2, pionr3, pion_r_1, pion_r_2, pion_r_3, pionb1, pionb2, pionb3, pion_b_1, pion_b_2, pion_b_3 , score_perdant, score_gagnant, premiertour
-    global line1, line2, cpt, fichier_nul, check1, check2
+    global pionr1, pionr2, pionr3, pion_r_1, pion_r_2, pion_r_3, pionb1, pionb2, pionb3, pion_b_1, pion_b_2, pion_b_3, premiertour
+    global fichier_nul, check1, check2, emplacement
     if premiertour == 1:
         tourdejouer, premiertour = 0, 0
     else:
@@ -1035,7 +1138,7 @@ def Initialisation():
     affichage_rouge.config(text = score_rouge)
     affichage_bleu.config(text = score_bleu)
     fichier_nul = open(r"Fichier_Nul.txt", "w")
-    line1, line2, cpt ,check1, check2 = 0, 0, 0, 0, 1
+    check1, check2 = 0, 1
     ResetPion()
 
 
@@ -1079,27 +1182,40 @@ def ConditionVictoire():
         canvas.bind('<ButtonPress-1>', NouvelleManche)
     affichage_rouge.config(text = score_rouge)
     affichage_bleu.config(text = score_bleu)
-    """
-    print("score bleu ", score_bleu, "   score rouge ", score_rouge)
-    print("x1b1 ", x1b1, "x1b2 ", x1b2, "x1b3 ", x1b3)
-    print("y2b1 ", y2b1, "y2b2 ", y2b2, "y2b3 ", y2b3)
-    """
     Victoire()
 
 
 def Victoire():
-    global winner, score_bleu, score_rouge, score_gagnant, score_perdant
+    global winner
     if score_bleu == 3 :
         winner = "bleu"
-        score_gagnant = score_bleu
-        score_perdant = score_rouge
     elif score_rouge == 3 :
         winner = "rouge"
-        score_gagnant = score_rouge
-        score_perdant = score_bleu
     if winner != "":
-        tk.messagebox.showinfo("Gagnant", "Les " + winner + " ont gagnés")
+        tk.messagebox.showinfo("Gagnant", "Les " + winner + " ont gagnés la partie !")
         canvas.bind('<ButtonPress-1>', NouvellePartie)
+
+
+def Nul():
+    global check1, check2
+    cpt = 0
+    if nb_tours >= 6:
+        liste = str(str(case1_couleure) + str(case2_couleure) + str(case3_couleure) + str(case4_couleure) + str(case5_couleure)
+        + str(case6_couleure) + str(case7_couleure) + str(case8_couleure) + str(case9_couleure) + "\n")
+        fichier_nul = open(r"Fichier_Nul.txt", "a+")
+        fichier_nul.write(liste)
+        fichier_nul = open(r"Fichier_Nul.txt", "r")
+        lignes = fichier_nul.readlines()
+        for i in range(len(lignes)):
+            for j in range(len(lignes)):
+                if i != j:
+                    check1, check2 = lignes[i], lignes[j]
+                if check1 == check2:
+                    cpt += 1
+        cpt /= 2
+        if cpt == 3:
+            tk.messagebox.showinfo("Nul", "La manche est nul")
+            canvas.bind('<ButtonPress-1>', NouvelleManche)
 
 
 def NouvelleManche(event):
@@ -1111,32 +1227,9 @@ def NouvellePartie(event):
 
 
 def NewGame():
-    global winner, score_bleu, score_rouge, score_perdant, score_gagnant
-    winner, score_bleu, score_rouge, score_perdant, score_gagnant = "", 0, 0, 0, 0
+    global winner, score_bleu, score_rouge
+    winner, score_bleu, score_rouge = "", 0, 0
     Initialisation()
-
-
-def Nul():
-    global cpt, line1, line2, check1, check2
-    cpt = 0
-    if nb_tours >= 6:
-        liste = str(str(case1_couleure) + str(case2_couleure) + str(case3_couleure) + str(case4_couleure) + str(case5_couleure)
-        + str(case6_couleure) + str(case7_couleure) + str(case8_couleure) + str(case9_couleure) + "\n")
-        fichier_nul = open(r"Fichier_Nul.txt", "a+")
-        fichier_nul.write(liste)
-        fichier_nul = open(r"Fichier_Nul.txt", "r")
-        lines = fichier_nul.readlines()
-        for i in range(len(lines)):
-            for j in range(len(lines)):
-                if i != j:
-                    check1, check2 = lines[i], lines[j]
-                if check1 == check2:
-                    cpt += 1
-        cpt /= 2
-        print(cpt)
-        if cpt == 3:
-            tk.messagebox.showinfo("Nul", "La manche est nul")
-            canvas.bind('<ButtonPress-1>', NouvelleManche)
 
 
 #FENETRE
@@ -1160,9 +1253,13 @@ lignev1 = canvas.create_line(50, 50, 50, 750)
 lignev2 = canvas.create_line(750, 50, 750, 750)
 
 frame1 = tk.Frame(root, relief = RIDGE, bd = 12)
-frame1.grid(column = 10, row = 2)
+frame1.grid(column = 10, row = 1)
 frame2 = tk.Frame(root, relief = RIDGE, bd = 12)
-frame2.grid(column = 10, row = 4)
+frame2.grid(column = 10, row = 3)
+frame3 = tk.Frame(root, relief = RIDGE, bd = 12)
+frame3.grid(column = 10, row = 5)
+frame4 = tk.Frame(root, relief = RIDGE, bd = 12)
+frame4.grid(column = 10, row = 7)
 
 score = tk.Label(frame1, width = 14, height = 1, text = "Score", font = ("helvetica", "20"))
 score.grid(column = 0, row = 0, columnspan = 4)
@@ -1179,6 +1276,11 @@ affichage_bleu.grid(column = 1, row = 2)
 
 new_game = tk.Button(frame2, width = 14, text = "Nouvelle Partie", font = ("helvetica", "20"), command = NewGame)
 new_game.grid(column = 0, row = 0)
+
+sauvegarde = tk.Button(frame3, width = 14, text= "Sauvegarder", font =("helvetica","20") , command=Sauvegarder)
+charger = tk.Button(frame4, width = 14, text= "Charger", font =("helvetica","20"), command=Charger)
+sauvegarde.grid(column = 0, row = 3)
+charger.grid(column = 0, row = 2)
 
 
 root.mainloop()
