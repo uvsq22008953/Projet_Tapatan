@@ -243,7 +243,7 @@ def ClicCase(event):
     global case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure
     global case6_couleure, case7_couleure, case8_couleure, case9_couleure
     if nb_tours<=6:
-        if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75:
+        if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75 and case1_libre==True:
             #case1
             if tourdejouer==1:
                 positionnement(25,25,75,75)
@@ -255,7 +255,7 @@ def ClicCase(event):
                 nb_tours+=1
                 case1_couleure=0
                 case1_libre=False
-        elif event.x>=375 and event.x<=425 and event.y>=25 and event.y<=75:
+        elif event.x>=375 and event.x<=425 and event.y>=25 and event.y<=75 and case2_libre==True:
             #case2
             if tourdejouer==1:
                 positionnement(375,25,425,75)
@@ -267,7 +267,7 @@ def ClicCase(event):
                 nb_tours+=1
                 case2_couleure=0
                 case2_libre=False
-        elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75:
+        elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75 and case3_libre==True:
             #case3
             if tourdejouer==1:
                 positionnement(725,25,775,75)
@@ -279,7 +279,7 @@ def ClicCase(event):
                 nb_tours+=1
                 case3_couleure=0
                 case3_libre=False
-        elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425:
+        elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425 and case4_libre==True:
             #case4
             if tourdejouer==1:
                 positionnement(25,375,75,425)
@@ -291,7 +291,7 @@ def ClicCase(event):
                 nb_tours+=1
                 case4_couleure=0
                 case4_libre=False
-        elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425:
+        elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425 and case5_libre==True:
             #case5
             if tourdejouer==1:
                 positionnement(375,375,425,425)
@@ -303,7 +303,7 @@ def ClicCase(event):
                 nb_tours+=1
                 case5_couleure=0
                 case5_libre=False
-        elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425:
+        elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425 and case6_libre==True:
             #case6
             if tourdejouer==1:
                 positionnement(725,375,775,425)
@@ -315,7 +315,7 @@ def ClicCase(event):
                 nb_tours+=1
                 case6_couleure=0
                 case6_libre=False
-        elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775:
+        elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775 and case7_libre==True:
             #case7
             if tourdejouer==1:
                 positionnement(25,725,75,775)
@@ -327,7 +327,7 @@ def ClicCase(event):
                nb_tours+=1
                case7_couleure=0
                case7_libre=False 
-        elif event.x>=375 and event.x<=425 and event.y>=725 and event.y<=775:
+        elif event.x>=375 and event.x<=425 and event.y>=725 and event.y<=775 and case8_libre==True:
             #case8
             if tourdejouer==1:
                 positionnement(375,725,425,775)
@@ -339,7 +339,7 @@ def ClicCase(event):
                 nb_tours+=1
                 case8_libre=False
                 case8_couleure=0
-        elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775:
+        elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775 and case9_libre==True:
             #case9
             if tourdejouer==1:
                 positionnement(725,725,775,775)
@@ -352,6 +352,7 @@ def ClicCase(event):
                 case9_couleure=0
                 case9_libre=False
     elif nb_tours>6 and nb_tours%2==1:
+        print(nb_tours)
         if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75:
             if case1_libre==False and case1_couleure==tourdejouer:
                 verification1(25,25,75,75)
