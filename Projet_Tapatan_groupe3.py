@@ -1011,8 +1011,7 @@ def Sauvegarder():
 def Charger ():
     global nb_tours, emplacement
     global case1_libre, case2_libre, case3_libre, case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre
-    nb_tours >= 6
-
+    
     emplacement = pickle.load (open("sauvegarde", "rb"))
     print("emplacement charger", emplacement)
 
