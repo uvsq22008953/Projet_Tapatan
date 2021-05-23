@@ -11,7 +11,8 @@ https://github.com/uvsq22008953/Projet_Tapatan
 import tkinter as tk
 import random
 from tkinter.constants import RIDGE
-from tkinter import StringVar, messagebox
+from tkinter import messagebox
+import pickle
 
 #VARIABLES POSITIONS PIONS BLEU
 x1b1, x2b1, y1b1, y2b1=0, 0, 0, 0
@@ -29,7 +30,6 @@ nb_tours=1
 # 0 si tour des rouges // 1 si tour des bleus
 tourdejouer=random.randint(0, 1)
 premiertour = tourdejouer
-print(tourdejouer)
 phase_placement, jel, selectionner, dx, dy = 1, 0, 0, 0, 0
 nb_placements_bleu, nb_placements_rouge = 0, 0
 case1_libre, case2_libre, case3_libre, case4_libre, case5_libre=True, True, True, True, True
@@ -40,7 +40,9 @@ pion_b_1, pion_b_2, pion_b_3 = 0, 0, 0
 pion_r_1, pion_r_2, pion_r_3 = 0, 0, 0
 pionr1, pionr2, pionr3 = 0, 0, 0
 pionb1, pionb2, pionb3 = 0, 0, 0
-winner, score_bleu, score_rouge, score_perdant, score_gagnant = "", 0, 0, 0, 0
+winner, score_bleu, score_rouge, check1, check2 = "", 0, 0, 0, 0
+fichier_nul = open(r"Fichier_Nul.txt", "w")
+emplacement = [case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure]
 
 
 #FONCTIONS
@@ -234,6 +236,8 @@ def positionnement(a, z, e, r):
                                 canvas.move(pion_r_3,dx,dy)
                                 tourdejouer=1
                                 pionr3=0
+    if nb_tours >= 6:
+        Nul()
 
 
 def ClicCase(event):
@@ -243,116 +247,115 @@ def ClicCase(event):
     global case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure
     global case6_couleure, case7_couleure, case8_couleure, case9_couleure
     if nb_tours<=6:
-        if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75 and case1_libre==True:
+        if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75:
             #case1
             if tourdejouer==1:
+                case1_couleure=1
                 positionnement(25,25,75,75)
                 nb_tours+=1
-                case1_couleure=1
                 case1_libre=False
             else:
+                case1_couleure=0
                 positionnement(25,25,75,75)
                 nb_tours+=1
-                case1_couleure=0
                 case1_libre=False
-        elif event.x>=375 and event.x<=425 and event.y>=25 and event.y<=75 and case2_libre==True:
+        elif event.x>=375 and event.x<=425 and event.y>=25 and event.y<=75:
             #case2
             if tourdejouer==1:
+                case2_couleure=1
                 positionnement(375,25,425,75)
                 nb_tours+=1
-                case2_couleure=1
                 case2_libre=False
             else:
+                case2_couleure=0
                 positionnement(375,25,425,75)
                 nb_tours+=1
-                case2_couleure=0
                 case2_libre=False
-        elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75 and case3_libre==True:
+        elif event.x>=725 and event.x<=775 and event.y>=25 and event.y<=75:
             #case3
             if tourdejouer==1:
+                case3_couleure=1
                 positionnement(725,25,775,75)
                 nb_tours+=1
-                case3_couleure=1
                 case3_libre=False
             else:
+                case3_couleure=0
                 positionnement(725,25,775,75)
                 nb_tours+=1
-                case3_couleure=0
                 case3_libre=False
-        elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425 and case4_libre==True:
+        elif event.x>=25 and event.x<=75 and event.y>=375 and event.y<=425:
             #case4
             if tourdejouer==1:
+                case4_couleure=1
                 positionnement(25,375,75,425)
                 nb_tours+=1
-                case4_couleure=1
                 case4_libre=False
             else:
+                case4_couleure=0
                 positionnement(25,375,75,425)
                 nb_tours+=1
-                case4_couleure=0
                 case4_libre=False
-        elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425 and case5_libre==True:
+        elif event.x>=375 and event.x<=425 and event.y>=375 and event.y<=425:
             #case5
             if tourdejouer==1:
+                case5_couleure=1
                 positionnement(375,375,425,425)
                 nb_tours+=1
-                case5_couleure=1
                 case5_libre=False
             else:
+                case5_couleure=0
                 positionnement(375,375,425,425)
                 nb_tours+=1
-                case5_couleure=0
                 case5_libre=False
-        elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425 and case6_libre==True:
+        elif event.x>=725 and event.x<=775 and event.y>=375 and event.y<=425:
             #case6
             if tourdejouer==1:
+                case6_couleure=1
                 positionnement(725,375,775,425)
                 nb_tours+=1
-                case6_couleure=1
                 case6_libre=False
             else:
+                case6_couleure=0
                 positionnement(725,375,775,425)
                 nb_tours+=1
-                case6_couleure=0
                 case6_libre=False
-        elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775 and case7_libre==True:
+        elif event.x>=25 and event.x<=75 and event.y>=725 and event.y<=775:
             #case7
             if tourdejouer==1:
+                case7_couleure=1
                 positionnement(25,725,75,775)
                 nb_tours+=1
-                case7_couleure=1
                 case7_libre=False
             else:
-               positionnement(25,725,75,775)
-               nb_tours+=1
-               case7_couleure=0
-               case7_libre=False 
-        elif event.x>=375 and event.x<=425 and event.y>=725 and event.y<=775 and case8_libre==True:
+                case7_couleure=0
+                positionnement(25,725,75,775)
+                nb_tours+=1
+                case7_libre=False 
+        elif event.x>=375 and event.x<=425 and event.y>=725 and event.y<=775:
             #case8
             if tourdejouer==1:
-                positionnement(375,725,425,775)
-                nb_tours+=1
-                case8_libre=False
                 case8_couleure=1
-            else:
                 positionnement(375,725,425,775)
                 nb_tours+=1
                 case8_libre=False
+            else:
                 case8_couleure=0
-        elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775 and case9_libre==True:
+                positionnement(375,725,425,775)
+                nb_tours+=1
+                case8_libre=False
+        elif event.x>=725 and event.x<=775 and event.y>=725 and event.y<=775:
             #case9
             if tourdejouer==1:
+                case9_couleure=1
                 positionnement(725,725,775,775)
                 nb_tours+=1
-                case9_couleure=1
                 case9_libre=False
             else:
+                case9_couleure=0
                 positionnement(725,725,775,775)
                 nb_tours+=1
-                case9_couleure=0
                 case9_libre=False
     elif nb_tours>6 and nb_tours%2==1:
-        print(nb_tours)
         if event.x>=25 and event.x<=75 and event.y>=25 and event.y<=75:
             if case1_libre==False and case1_couleure==tourdejouer:
                 verification1(25,25,75,75)
@@ -513,18 +516,21 @@ def verification1(q,s,d,f):
             pionb1=1
             selectionner=1
             case1_libre=True
+            case1_couleure=-1
             dx=q
             dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=1
             case1_libre=True
+            case1_couleure=-1
             dx=q
             dy=s
         else :
             pionb3=1
             selectionner=1
             case1_libre=True
+            case1_couleure=-1
             dx=q
             dy=s
     elif case1_libre==False and case1_couleure==0:
@@ -532,18 +538,21 @@ def verification1(q,s,d,f):
             pionr1=1
             selectionner=1
             case1_libre=True
+            case1_couleure=-1
             dx=q
             dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=1
             case1_libre=True
+            case1_couleure=-1
             dx=q
             dy=s
         else :
             pionr3=1
             selectionner=1
             case1_libre=True
+            case1_couleure=-1
             dx=q
             dy=s
     else:
@@ -562,18 +571,21 @@ def verification2(q,s,d,f):
             pionb1=1
             selectionner=2
             case2_libre=True
+            case2_couleure=-1
             dx=q
             dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=2
             case2_libre=True
+            case2_couleure=-1
             dx=q
             dy=s
         else :
             pionb3=1
             selectionner=2
             case2_libre=True
+            case2_couleure=-1
             dx=q
             dy=s
     elif case2_libre==False and case2_couleure==0:
@@ -581,18 +593,21 @@ def verification2(q,s,d,f):
             pionr1=1
             selectionner=2
             case2_libre=True
+            case2_couleure=-1
             dx=q
             dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=2
             case2_libre=True
+            case2_couleure=-1
             dx=q
             dy=s
         else :
             pionr3=1
             selectionner=2
             case2_libre=True
+            case2_couleure=-1
             dx=q
             dy=s
     else:
@@ -611,12 +626,14 @@ def verification3(q,s,d,f):
             pionb1=1
             selectionner=3
             case3_libre=True
+            case3_couleure=-1
             dx=q
             dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=3
             case3_libre=True
+            case3_couleure=-1
             dx=q
             dy=s
             print(44)
@@ -624,6 +641,7 @@ def verification3(q,s,d,f):
             pionb3=1
             selectionner=3
             case3_libre=True
+            case3_couleure=-1
             dx=q
             dy=s
     elif case3_libre==False and case3_couleure==0:
@@ -631,18 +649,21 @@ def verification3(q,s,d,f):
             pionr1=1
             selectionner=3
             case3_libre=True
+            case3_couleure=-1
             dx=q
             dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=3
             case3_libre=True
+            case3_couleure=-1
             dx=q
             dy=s
         else :
             pionr3=1
             selectionner=3
             case3_libre=True
+            case3_couleure=-1
             dx=q
             dy=s
     else:
@@ -661,18 +682,21 @@ def verification4(q,s,d,f):
             pionb1=1
             selectionner=4
             case4_libre=True
+            case4_couleure=-1
             dx=q
             dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=4
             case4_libre=True
+            case4_couleure=-1
             dx=q
             dy=s
         else :
             pionb3=1
             selectionner=4
             case4_libre=True
+            case4_couleure=-1
             dx=q
             dy=s
     elif case4_libre==False and case4_couleure==0:
@@ -680,18 +704,21 @@ def verification4(q,s,d,f):
             pionr1=1
             selectionner=4
             case4_libre=True
+            case4_couleure=-1
             dx=q
             dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=4
             case4_libre=True
+            case4_couleure=-1
             dx=q
             dy=s
         else :
             pionr3=1
             selectionner=4
             case4_libre=True
+            case4_couleure=-1
             dx=q
             dy=s
     else:
@@ -712,6 +739,7 @@ def verification5(q,s,d,f):
             pionb1=1
             selectionner=5
             case5_libre=True
+            case5_couleure=-1
             dx=q
             dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
@@ -724,6 +752,7 @@ def verification5(q,s,d,f):
             pionb3=1
             selectionner=5
             case5_libre=True
+            case5_couleure=-1
             dx=q
             dy=s
     elif case5_libre==False and case5_couleure==0:
@@ -731,18 +760,21 @@ def verification5(q,s,d,f):
             pionr1=1
             selectionner=5
             case5_libre=True
+            case5_couleure=-1
             dx=q
             dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=5
             case5_libre=True
+            case5_couleure=-1
             dx=q
             dy=s
         else :
             pionr3=1
             selectionner=5
             case5_libre=True
+            case5_couleure=-1
             dx=q
             dy=s
     else:
@@ -762,18 +794,21 @@ def verification6(q,s,d,f):
             pionb1=1
             selectionner=6
             case6_libre=True
+            case6_couleure=-1
             dx=q
             dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=6
             case6_libre=True
+            case6_couleure=-1
             dx=q
             dy=s
         else :
             pionb3=1
             selectionner=6
             case6_libre=True
+            case6_couleure=-1
             dx=q
             dy=s
     elif case6_libre==False and case6_couleure==0:
@@ -781,6 +816,7 @@ def verification6(q,s,d,f):
             pionr1=1
             selectionner=6
             case6_libre=True
+            case6_couleure=-1
             dx=q
             dy=s
             print("capaaaas")
@@ -788,12 +824,14 @@ def verification6(q,s,d,f):
             pionr2=1
             selectionner=6
             case6_libre=True
+            case6_couleure=-1
             dx=q
             dy=s
         else :
             pionr3=1
             selectionner=6
             case6_libre=True
+            case6_couleure=-1
             dx=q
             dy=s
     else:
@@ -812,18 +850,21 @@ def verification7(q,s,d,f):
             pionb1=1
             selectionner=7
             case7_libre=True
+            case7_couleure=-1
             dx=q
             dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=7
             case7_libre=True
+            case7_couleure=-1
             dx=q
             dy=s
         else :
             pionb3=1
             selectionner=7
             case7_libre=True
+            case7_couleure=-1
             dx=q
             dy=s
     elif case7_libre==False and case7_couleure==0:
@@ -831,18 +872,21 @@ def verification7(q,s,d,f):
             pionr1=1
             selectionner=7
             case7_libre=True
+            case7_couleure=-1
             dx=q
             dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=7
             case7_libre=True
+            case7_couleure=-1
             dx=q
             dy=s
         else :
             pionr3=1
             selectionner=7
             case7_libre=True
+            case7_couleure=-1
             dx=q
             dy=s
     else:
@@ -861,18 +905,21 @@ def verification8(q,s,d,f):
             pionb1=1
             selectionner=8
             case8_libre=True
+            case8_couleure=-1
             dx=q
             dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=8
             case8_libre=True
+            case8_couleure=-1
             dx=q
             dy=s
         else :
             pionb3=1
             selectionner=8
             case8_libre=True
+            case8_couleure=-1
             dx=q
             dy=s
     elif case8_libre==False and case8_couleure==0:
@@ -880,18 +927,21 @@ def verification8(q,s,d,f):
             pionr1=1
             selectionner=8
             case8_libre=True
+            case8_couleure=-1
             dx=q
             dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=8
             case8_libre=True
+            case8_couleure=-1
             dx=q
             dy=s
         else :
             pionr3=1
             selectionner=8
             case8_libre=True
+            case8_couleure=-1
             dx=q
             dy=s
     else:
@@ -910,18 +960,21 @@ def verification9(q,s,d,f):
             pionb1=1
             selectionner=9
             case9_libre=True
+            case9_couleure=-1
             dx=q
             dy=s
         elif x1b2==q and x2b2==s and y1b2==d and y2b2==f:
             pionb2=1
             selectionner=9
             case9_libre=True
+            case9_couleure=-1
             dx=q
             dy=s
         else :
             pionb3=1
             selectionner=9
             case9_libre=True
+            case9_couleure=-1
             dx=q
             dy=s
     elif case9_libre==False and case9_couleure==0:
@@ -929,22 +982,144 @@ def verification9(q,s,d,f):
             pionr1=1
             selectionner=9
             case9_libre=True
+            case9_couleure=-1
             dx=q
             dy=s
         elif x1r2==q and x2r2==s and y1r2==d and y2r2==f:
             pionr2=1
             selectionner=9
             case9_libre=True
+            case9_couleure=-1
             dx=q
             dy=s
         else :
             pionr3=1
             selectionner=9
             case9_libre=True
+            case9_couleure=-1
             dx=q
             dy=s
     else:
         nb_tours+=1
+
+
+def Sauvegarder():
+    emplacement = [case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure, nb_tours]
+    pickle.dump (emplacement, open("sauvegarde", "wb"))
+
+
+def Charger ():
+    global nb_tours, emplacement
+    global case1_libre, case2_libre, case3_libre, case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre
+    nb_tours >= 6
+
+    emplacement = pickle.load (open("sauvegarde", "rb"))
+    print("emplacement charger", emplacement)
+
+    if emplacement[0] == 1 : 
+        canvas.create_rectangle(25,25,75,75, fill="blue", width=2)
+        case1_libre = False
+        nb_tours += 1 
+    elif emplacement[0] == 0 : 
+        canvas.create_rectangle(25,25,75,75, fill="red", width=2)
+        case1_libre = False
+        nb_tours += 1 
+    elif emplacement[0] == -1 :
+        case1_libre = True
+
+
+    if emplacement[1] == 1 :  
+        canvas.create_rectangle(375,25,425,75, fill="blue", width=2)
+        case2_libre = False
+        nb_tours += 1 
+    elif emplacement[1] == 0 :
+        canvas.create_rectangle(375,25,425,75, fill="red", width=2)
+        case2_libre = False
+        nb_tours += 1
+    elif emplacement[1] == -1 :
+        case2_libre = True
+
+    if emplacement[2] == 1 :
+        canvas.create_rectangle(725,25,775,75, fill="blue", width=2)
+        case3_libre = False
+        nb_tours += 1
+    elif emplacement[2] == 0 :
+        canvas.create_rectangle(725,25,775,75, fill="red", width=2)
+        case3_libre = False
+        nb_tours += 1
+    elif emplacement[2] == -1 :
+        case3_libre = True
+        
+    
+    if emplacement[3] == 1 :
+        canvas.create_rectangle(25,375,75,425, fill="blue", width=2)
+        case4_libre = False
+        nb_tours += 1
+    elif emplacement[3] == 0 : 
+        canvas.create_rectangle(25,375,75,425, fill="red", width=2)
+        case4_libre = False
+        nb_tours += 1
+    elif emplacement[3] == -1 :
+        case4_libre = True
+
+    if emplacement[4] == 1 :
+        canvas.create_rectangle(375,375,425,425, fill="blue", width=2)
+        case5_libre = False
+        nb_tours += 1 
+    elif emplacement[4] == 0 :
+        canvas.create_rectangle(375,375,425,425, fill="red", width=2)
+        case5_libre = False
+        nb_tours += 1
+    elif emplacement[4] == -1 :
+        case5_libre = True
+
+    if emplacement[5] == 1 :
+        canvas.create_rectangle(725,375,775,425, fill="blue", width=2)
+        case6_libre = False
+        nb_tours += 1
+    elif emplacement[5] == 0 :
+        canvas.create_rectangle(725,375,775,425, fill="red", width=2)
+        case6_libre = False
+        nb_tours += 1
+    elif emplacement[5] == -1 :
+        case6_libre = True
+    
+    if emplacement[6] == 1 : 
+        canvas.create_rectangle(25,725,75,775, fill="blue", width=2)
+        case7_libre = False
+        nb_tours+= 1
+    elif emplacement[6] == 0 :
+        canvas.create_rectangle(25,725,75,775, fill="red", width=2)
+        case7_libre = False
+        nb_tours +=1
+    elif emplacement[6] == -1 :
+        case7_libre = True
+
+    if emplacement[7] == 1 :
+        canvas.create_rectangle(375,725,425,775, fill="blue", width=2)
+        case8_libre = False
+        nb_tours += 1
+    elif emplacement[7] == 0 :
+        canvas.create_rectangle(375,725,425,775, fill="red", width=2)
+        case8_libre = False
+        nb_tours += 1
+    elif emplacement[7] == -1 :
+        case8_libre = True
+
+    if emplacement[8] == 1 :
+        canvas.create_rectangle(725,725,775,775, fill="blue", width=2)
+        case9_libre = False
+        nb_tours += 1
+    elif emplacement[8] == 0 :
+        canvas.create_rectangle(725,725,775,775, fill="red", width=2)
+        case9_libre = False
+        nb_tours += 1
+    elif emplacement[8] == -1 :
+        case9_libre = True
+    
+    return(emplacement)
+
+
 
 
 def Initialisation():
@@ -953,7 +1128,8 @@ def Initialisation():
     global x1b1, x2b1, y1b1, y2b1, x1b2, x2b2, y1b2, y2b2, x1b3, y1b3, x2b3, y2b3
     global x1r1, y1r1, x2r1, y2r1, x1r2, x2r2, y1r2, y2r2, x1r3, y1r3, x2r3, y2r3
     global case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure
-    global pionr1, pionr2, pionr3, pion_r_1, pion_r_2, pion_r_3, pionb1, pionb2, pionb3, pion_b_1, pion_b_2, pion_b_3 , score_perdant, score_gagnant, premiertour
+    global pionr1, pionr2, pionr3, pion_r_1, pion_r_2, pion_r_3, pionb1, pionb2, pionb3, pion_b_1, pion_b_2, pion_b_3, premiertour
+    global fichier_nul, check1, check2, emplacement
     if premiertour == 1:
         tourdejouer, premiertour = 0, 0
     else:
@@ -977,6 +1153,8 @@ def Initialisation():
     canvas.bind('<ButtonPress-1>', ClicCase)
     affichage_rouge.config(text = score_rouge)
     affichage_bleu.config(text = score_bleu)
+    fichier_nul = open(r"Fichier_Nul.txt", "w")
+    check1, check2 = 0, 1
     ResetPion()
 
 
@@ -994,23 +1172,29 @@ def ResetPion():
 
 def ConditionVictoire():
     global score_rouge, score_bleu
-    if (x1b1 == x1b2 and x1b2 == x1b3 and x1b1 != 0) or (y1b1 == y1b2 and y1b2 == y1b3 and y1b1 != 0):
+    if (x1b1 == x1b2 and x1b2 == x1b3 and x1b1 != 0 and y2b1 != y2b2) or (y2b1 == y2b2 and y2b2 == y2b3 and y2b1 != 0 and x1b1 != x1b2):
         score_bleu += 1
+        tk.messagebox.showinfo("Manche", "Manche pour les bleus")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif ((x1b1 == 25 and y1b1 == 25) and (x1b2 == 375 and y1b2 == 375) and (x1b3 == 725 and y1b3 == 725)):
+    elif ((x1b1 == 25 and y2b1 == 75) and (x1b2 == 375 and y2b2 == 425) and (x1b3 == 725 and y2b3 == 775)):
         score_bleu += 1
+        tk.messagebox.showinfo("Manche", "Manche pour les bleus")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif ((x1b1 == 725 and y1b1 == 25) and (x1b2 == 375 and y1b2 == 375) and (x1b3 == 25 and y1b3 == 725)):
+    elif ((x1b1 == 725 and y2b1 == 75) and (x1b2 == 375 and y2b2 == 425) and (x1b3 == 25 and y2b3 == 775)):
         score_bleu += 1
+        tk.messagebox.showinfo("Manche", "Manche pour les bleus")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif (x1r1 == x1r2 and x1r2 == x1r3 and x1r1 != 0) or (y1r1 == y1r2 and y1r2 == y1r3 and y1r1 != 0):
+    elif (x1r1 == x1r2 and x1r2 == x1r3 and x1r1 != 0 and y2r1 != y2r2) or (y2r1 == y2r2 and y2r2 == y2r3 and y2r1 != 0 and x1b1 != x1b2):
         score_rouge += 1
+        tk.messagebox.showinfo("Manche", "Manche pour les rouges")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif ((x1r1 == 25 and y1r1 == 25) and (x1r2 == 375 and y1r2 == 375) and (x1r3 == 725 and y1r3 == 725)):
+    elif ((x1r1 == 25 and y2r1 == 75) and (x1r2 == 375 and y2r2 == 425) and (x1r3 == 725 and y2r3 == 775)):
         score_rouge += 1
+        tk.messagebox.showinfo("Manche", "Manche pour les rouges")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif ((x1r1 == 725 and y1r1 == 25) and (x1r2 == 375 and y1r2 == 375) and (x1r3 == 25 and y1r3 == 725)):
+    elif ((x1r1 == 725 and y2r1 == 75) and (x1r2 == 375 and y2r2 == 425) and (x1r3 == 25 and y2r3 == 775)):
         score_rouge += 1
+        tk.messagebox.showinfo("Manche", "Manche pour les rouges")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
     affichage_rouge.config(text = score_rouge)
     affichage_bleu.config(text = score_bleu)
@@ -1018,18 +1202,36 @@ def ConditionVictoire():
 
 
 def Victoire():
-    global winner, score_bleu, score_rouge, score_gagnant, score_perdant
+    global winner
     if score_bleu == 3 :
         winner = "bleu"
-        score_gagnant = score_bleu
-        score_perdant = score_rouge
     elif score_rouge == 3 :
         winner = "rouge"
-        score_gagnant = score_rouge
-        score_perdant = score_bleu
     if winner != "":
-        tk.messagebox.showinfo("Gagnant", "Les " + winner + " ont gagnés")
+        tk.messagebox.showinfo("Gagnant", "Les " + winner + " ont gagnés la partie !")
         canvas.bind('<ButtonPress-1>', NouvellePartie)
+
+
+def Nul():
+    global check1, check2
+    cpt = 0
+    if nb_tours >= 6:
+        liste = str(str(case1_couleure) + str(case2_couleure) + str(case3_couleure) + str(case4_couleure) + str(case5_couleure)
+        + str(case6_couleure) + str(case7_couleure) + str(case8_couleure) + str(case9_couleure) + "\n")
+        fichier_nul = open(r"Fichier_Nul.txt", "a+")
+        fichier_nul.write(liste)
+        fichier_nul = open(r"Fichier_Nul.txt", "r")
+        lignes = fichier_nul.readlines()
+        for i in range(len(lignes)):
+            for j in range(len(lignes)):
+                if i != j:
+                    check1, check2 = lignes[i], lignes[j]
+                if check1 == check2:
+                    cpt += 1
+        cpt /= 2
+        if cpt == 3:
+            tk.messagebox.showinfo("Nul", "La manche est nul")
+            canvas.bind('<ButtonPress-1>', NouvelleManche)
 
 
 def NouvelleManche(event):
@@ -1041,8 +1243,8 @@ def NouvellePartie(event):
 
 
 def NewGame():
-    global winner, score_bleu, score_rouge, score_perdant, score_gagnant
-    winner, score_bleu, score_rouge, score_perdant, score_gagnant = "", 0, 0, 0, 0
+    global winner, score_bleu, score_rouge
+    winner, score_bleu, score_rouge = "", 0, 0
     Initialisation()
 
 
@@ -1067,9 +1269,13 @@ lignev1 = canvas.create_line(50, 50, 50, 750)
 lignev2 = canvas.create_line(750, 50, 750, 750)
 
 frame1 = tk.Frame(root, relief = RIDGE, bd = 12)
-frame1.grid(column = 10, row = 2)
+frame1.grid(column = 10, row = 1)
 frame2 = tk.Frame(root, relief = RIDGE, bd = 12)
-frame2.grid(column = 10, row = 4)
+frame2.grid(column = 10, row = 3)
+frame3 = tk.Frame(root, relief = RIDGE, bd = 12)
+frame3.grid(column = 10, row = 5)
+frame4 = tk.Frame(root, relief = RIDGE, bd = 12)
+frame4.grid(column = 10, row = 7)
 
 score = tk.Label(frame1, width = 14, height = 1, text = "Score", font = ("helvetica", "20"))
 score.grid(column = 0, row = 0, columnspan = 4)
@@ -1086,6 +1292,11 @@ affichage_bleu.grid(column = 1, row = 2)
 
 new_game = tk.Button(frame2, width = 14, text = "Nouvelle Partie", font = ("helvetica", "20"), command = NewGame)
 new_game.grid(column = 0, row = 0)
+
+sauvegarde = tk.Button(frame3, width = 14, text= "Sauvegarder", font =("helvetica","20") , command=Sauvegarder)
+charger = tk.Button(frame4, width = 14, text= "Charger", font =("helvetica","20"), command=Charger)
+sauvegarde.grid(column = 0, row = 3)
+charger.grid(column = 0, row = 2)
 
 
 root.mainloop()
