@@ -967,9 +967,9 @@ def verification9(q,s,d,f):
     else:
         nb_tours+=1
 
-emplacement = [case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure]
 
 def Sauvegarder():
+    emplacement = [case1_couleure, case2_couleure, case3_couleure, case4_couleure, case5_couleure, case6_couleure, case7_couleure, case8_couleure, case9_couleure]
     pickle.dump (emplacement, open("sauvegarde", "wb"))
 
 def Charger ():
@@ -984,93 +984,75 @@ def Charger ():
 
     emplacement = pickle.load (open("sauvegarde", "rb"))
 
-    if emplacement[0] == 1: 
-        positionnement(25,25,75,75)
-        canvas.create_rectangle(x1b1,x2b1,y1b1,y2b1, fill="blue", width=2)
+    if emplacement[0] == 1 : 
+        canvas.create_rectangle(25,25,75,75, fill="blue", width=2)
         nb_tours += 1 
     elif emplacement[0] == 0 : 
-        positionnement(25,25,75,75)
-        canvas.create_rectangle(x1r1,x2r1,y1r1,y2r1, fill="red", width=2)
+        canvas.create_rectangle(25,25,75,75, fill="red", width=2)
         nb_tours += 1 
   
 
     if emplacement[1] == 1 :  
-        positionnement(375,25,425,75)
-        canvas.create_rectangle(x1b2,x2b2,y1b2,y2b2, fill="blue", width=2)
+        canvas.create_rectangle(375,25,425,75, fill="blue", width=2)
         nb_tours += 1 
     elif emplacement[1] == 0 :
-        positionnement(375,25,425,75)
-        canvas.create_rectangle(x1r2,x1r2,y1r2,y2r2, fill="red", width=2)
+        canvas.create_rectangle(375,25,425,75, fill="red", width=2)
         nb_tours += 1
    
 
-    if emplacement[2] == 1:
-        positionnement(725,25,775,75)
-        canvas.create_rectangle(x1b3,x2b3,y1b3,y2b3, fill="blue", width=2)
+    if emplacement[2] == 1 :
+        canvas.create_rectangle(725,25,775,75, fill="blue", width=2)
         nb_tours += 1
-    elif emplacement[2]== 0:
-        positionnement(725,25,775,75)
-        canvas.create_rectangle(x1r3,x2r3,y1r3,y2r3, fill="red", width=2)
+    elif emplacement[2] == 0 :
+        canvas.create_rectangle(725,25,775,75, fill="red", width=2)
         nb_tours += 1
   
     
-    if emplacement[3]  == 1:
-        positionnement(25,375,75,425)
-        canvas.create_rectangle(x1b1,x2b1,y1b1,y2b1, fill="blue", width=2)
+    if emplacement[3] == 1 :
+        canvas.create_rectangle(25,375,75,425, fill="blue", width=2)
         nb_tours += 1
-    elif emplacement[3]  == 0: 
-        positionnement(25,375,75,425)
-        canvas.create_rectangle(x1r1,x2r1,y1r1,y2r1, fill="red", width=2)
+    elif emplacement[3] == 0 : 
+        canvas.create_rectangle(25,375,75,425, fill="red", width=2)
         nb_tours += 1
  
 
     if emplacement[4] == 1 :
-        positionnement(375,375,425,425)
-        canvas.create_rectangle(x1b2,x2b2,y1b2,y2b2, fill="blue", width=2)
+        canvas.create_rectangle(375,375,425,425, fill="blue", width=2)
         nb_tours += 1 
-    elif emplacement[4]  == 0:
-        positionnement(375,375,425,425)
-        canvas.create_rectangle(x1r2,x1r2,y1r2,y2r2, fill="red", width=2)
+    elif emplacement[4] == 0 :
+        canvas.create_rectangle(375,375,425,425, fill="red", width=2)
         nb_tours += 1
    
 
-    if emplacement[5]  == 1:
-        positionnement(725,375,775,425)
-        canvas.create_rectangle(x1b3,x2b3,y1b3,y2b3, fill="blue", width=2)
+    if emplacement[5] == 1 :
+        canvas.create_rectangle(725,375,775,425, fill="blue", width=2)
         nb_tours += 1
-    elif emplacement[5]  == 0:
-        positionnement(725,375,775,425)
-        canvas.create_rectangle(x1r3,x2r3,y1r3,y2r3, fill="red", width=2)
+    elif emplacement[5] == 0 :
+        canvas.create_rectangle(725,375,775,425, fill="red", width=2)
         nb_tours += 1
   
     
-    if emplacement[6]  == 1:
-        positionnement(25,725,75,775)
-        canvas.create_rectangle(x1b1,x2b1,y1b1,y2b1, fill="blue", width=2)
+    if emplacement[6] == 1 : 
+        canvas.create_rectangle(25,725,75,775, fill="blue", width=2)
         nb_tours+= 1
-    elif emplacement[6]  == 0:
-        positionnement(25,725,75,775)
-        canvas.create_rectangle(x1r1,x2r1,y1r1,y2r1, fill="red", width=2)
+    elif emplacement[6] == 0 :
+        canvas.create_rectangle(25,725,75,775, fill="red", width=2)
         nb_tours +=1
  
 
-    if emplacement[7]  == 1:
-        positionnement(375,725,425,775)
-        canvas.create_rectangle(x1b2,x2b2,y1b2,y2b2, fill="blue", width=2)
+    if emplacement[7] == 1 :
+        canvas.create_rectangle(375,725,425,775, fill="blue", width=2)
         nb_tours += 1
-    elif emplacement[7]  == 0 :
-        positionnement(375,725,425,775)
-        canvas.create_rectangle(x1r2,x1r2,y1r2,y2r2, fill="red", width=2)
+    elif emplacement[7] == 0 :
+        canvas.create_rectangle(375,725,425,775, fill="red", width=2)
         nb_tours += 1
    
 
-    if emplacement[8] == 1:
-        positionnement(725,725,775,775)
-        canvas.create_rectangle(x1b3,x2b3,y1b3,y2b3, fill="blue", width=2)
+    if emplacement[8] == 1 :
+        canvas.create_rectangle(725,725,775,775, fill="blue", width=2)
         nb_tours += 1
-    elif emplacement[8] == 0:
-        positionnement(725,725,775,775)
-        canvas.create_rectangle(x1r3,x2r3,y1r3,y2r3, fill="red", width=2)
+    elif emplacement[8] == 0 :
+        canvas.create_rectangle(725,725,775,775, fill="red", width=2)
         nb_tours += 1
 
     return(emplacement)
