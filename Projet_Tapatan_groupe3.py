@@ -1,8 +1,8 @@
 """"
 groupe MPCI 3
-Bertuit Marlone IA
+Bertuit Marlone   IA
 Moreira Théo  Positionnement et plateau
-Lopes Ferreira Lucas sauvegarde
+Lopes Ferreira Lucas Sauvegarde
 Baali Wassim Déplacement
 Fernandez Sébastien Condition de victoire
 https://github.com/uvsq22008953/Projet_Tapatan
