@@ -1368,16 +1368,17 @@ def Charger ():
     elif emplacement[5] == -1 :
         case6_libre = True
     
-    if emplacement[6] == 1 : 
-        canvas.create_rectangle(25,725,75,775, fill="blue", width=2)
-        case7_libre = False
-        nb_tours+= 1
-    elif emplacement[6] == 0 :
-        canvas.create_rectangle(25,725,75,775, fill="red", width=2)
-        case7_libre = False
-        nb_tours +=1
-    elif emplacement[6] == -1 :
-        case7_libre = True
+        if emplacement[6] == 1 : 
+            canvas.create_rectangle(25,725,75,775, fill="blue", width=2)
+            case7_libre = False
+            nb_tours+= 1
+        elif emplacement[6] == 0 :
+            canvas.create_rectangle(25,725,75,775, fill="red", width=2)
+            case7_libre = False
+
+            nb_tours +=1
+        elif emplacement[6] == -1 :
+            case7_libre = True
 
     if emplacement[7] == 1 :
         canvas.create_rectangle(375,725,425,775, fill="blue", width=2)
@@ -1390,16 +1391,19 @@ def Charger ():
     elif emplacement[7] == -1 :
         case8_libre = True
 
-    if emplacement[8] == 1 :
-        canvas.create_rectangle(725,725,775,775, fill="blue", width=2)
-        case9_libre = False
-        nb_tours += 1
-    elif emplacement[8] == 0 :
-        canvas.create_rectangle(725,725,775,775, fill="red", width=2)
-        case9_libre = False
-        nb_tours += 1
-    elif emplacement[8] == -1 :
-        case9_libre = True
+        if emplacement[8] == 1 :
+            canvas.create_rectangle(725,725,775,775, fill="blue", width=2)
+            case9_libre = False
+            nb_tours += 1
+        elif emplacement[8] == 0 :
+            canvas.create_rectangle(725,725,775,775, fill="red", width=2)
+            case9_libre = False
+            nb_tours += 1
+        elif emplacement[8] == -1 :
+            case9_libre = True
+            
+    elif nb_tours>=6 :
+        Nul()
     
     return(emplacement)
 
