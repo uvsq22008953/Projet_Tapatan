@@ -1296,6 +1296,7 @@ def Sauvegarder():
 def Charger ():
     global nb_tours, emplacement, tourdejouer
     global case1_libre, case2_libre, case3_libre, case4_libre, case5_libre, case6_libre, case7_libre, case8_libre, case9_libre
+    Initialisation()
     emplacement = pickle.load (open("sauvegarde", "rb"))
     print("emplacement charger", emplacement)
  
@@ -1370,12 +1371,11 @@ def Charger ():
         if emplacement[6] == 1 : 
             canvas.create_rectangle(25,725,75,775, fill="blue", width=2)
             case7_libre = False
-            pionb1 = 0
             nb_tours+= 1
         elif emplacement[6] == 0 :
             canvas.create_rectangle(25,725,75,775, fill="red", width=2)
             case7_libre = False
-            pionr1 = 1
+
             nb_tours +=1
         elif emplacement[6] == -1 :
             case7_libre = True
@@ -1401,6 +1401,7 @@ def Charger ():
             nb_tours += 1
         elif emplacement[8] == -1 :
             case9_libre = True
+            
     elif nb_tours>=6 :
         Nul()
     
