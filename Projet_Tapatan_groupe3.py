@@ -1,10 +1,10 @@
 """"
 groupe MPCI 3
-Bertuit Marlone   IA
-Moreira Théo  Positionnement et plateau
-Lopes Ferreira Lucas Sauvegarde
-Baali Wassim Déplacement
-Fernandez Sébastien Condition de victoire
+Bertuit Marlone 
+Moreira Théo  
+Lopes Ferreira Lucas 
+Baali Wassim 
+Fernandez Sébastien 
 https://github.com/uvsq22008953/Projet_Tapatan
 """
 
@@ -1454,7 +1454,6 @@ def ResetPion():
 
 def ConditionVictoire():
     global score_rouge, score_bleu
-    print("x1r1 ", x1r1, "y2r1 ", y2r1, "x1r2 ", x1r1,"y2r2 ", y2r2, "x1r3 ", x1r3, "y2r3 ", y2r3,)
     if (x1b1 == x1b2 and x1b2 == x1b3 and x1b1 != 0 and y2b1 != y2b2) or (y2b1 == y2b2 and y2b2 == y2b3 and y2b1 != 0 and x1b1 != x1b2):
         score_bleu += 1
         tk.messagebox.showinfo("Manche", "Manche pour les bleus")
