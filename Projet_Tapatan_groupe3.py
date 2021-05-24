@@ -1459,19 +1459,11 @@ def ConditionVictoire():
         score_bleu += 1
         tk.messagebox.showinfo("Manche", "Manche pour les bleus")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif (((x1b1 == 25 and y2b1 == 75) and (x1b2 == 375 and y2b2 == 425) and (x1b3 == 725 and y2b3 == 775)) or ((x1b1 == 25 and y2b1 == 75)
-    and (x1b3 == 375 and y2b3 == 425) and (x1b2 == 725 and y2b2 == 775)) or ((x1b2 == 25 and y2b2 == 75) and (x1b1 == 375 and y2b1 == 425)
-    and (x1b3 == 725 and y2b3 == 775)) or ((x1b2 == 25 and y2b2 == 75) and (x1b3 == 375 and y2b3 == 425) and (x1b1 == 725 and y2b1 == 775))
-    or ((x1b3 == 25 and y2b3 == 75) and (x1b1 == 375 and y2b1 == 425) and (x1b2 == 725 and y2b2 == 775)) or ((x1b3 == 25 and y2b3 == 75)
-    and (x1b2 == 375 and y2b2 == 425) and (x1b1 == 725 and y2b1 == 775))):
+    elif (case1_couleure == case5_couleure and case5_couleure == case9_couleure and case9_couleure == 1):
         score_bleu += 1
         tk.messagebox.showinfo("Manche", "Manche pour les bleus")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif (((x1b1 == 725 and y2b1 == 75) and (x1b2 == 375 and y2b2 == 425) and (x1b3 == 25 and y2b3 == 775)) or ((x1b1 == 725 and y2b1 == 75)
-    and (x1b3 == 375 and y2b3 == 425) and (x1b2 == 25 and y2b2 == 775)) or ((x1b2 == 725 and y2b2 == 75) and (x1b1 == 375 and y2b1 == 425)
-    and (x1b3 == 25 and y2b3 == 775)) or ((x1b2 == 725 and y2b2 == 75) and (x1b3 == 375 and y2b3 == 425) and (x1b1 == 25 and y2b1 == 775))
-    or ((x1b3 == 725 and y2b3 == 75) and (x1b1 == 375 and y2b1 == 425) and (x1b2 == 25 and y2b2 == 775)) or ((x1b3 == 725 and y2b3 == 75)
-    and (x1b2 == 375 and y2b2 == 425) and (x1b1 == 25 and y2b1 == 775))):
+    elif (case3_couleure == case5_couleure and case5_couleure == case7_couleure and case7_couleure == 1):
         score_bleu += 1
         tk.messagebox.showinfo("Manche", "Manche pour les bleus")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
@@ -1479,19 +1471,11 @@ def ConditionVictoire():
         score_rouge += 1
         tk.messagebox.showinfo("Manche", "Manche pour les rouges")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif (((x1r1 == 25 and y2r1 == 75) and (x1r2 == 375 and y2r2 == 425) and (x1r3 == 725 and y2r3 == 775)) or ((x1r1 == 25 and y2r1 == 75)
-    and (x1r3 == 375 and y2r3 == 425) and (x1r2 == 725 and y2r2 == 775)) or ((x1r2 == 25 and y2r2 == 75) and (x1r1 == 375 and y2r1 == 425)
-    and (x1r3 == 725 and y2r3 == 775)) or ((x1r2 == 25 and y2r2 == 75) and (x1r3 == 375 and y2r3 == 425) and (x1r1 == 725 and y2r1 == 775))
-    or ((x1r3 == 25 and y2r3 == 75) and (x1r1 == 375 and y2r1 == 425) and (x1r2 == 725 and y2r2 == 775)) or ((x1r3 == 25 and y2r3 == 75)
-    and (x1r2 == 375 and y2r2 == 425) and (x1r1 == 725 and y2r1 == 775))):
+    elif (case1_couleure == case5_couleure and case5_couleure == case9_couleure and case9_couleure == 0):
         score_rouge += 1
         tk.messagebox.showinfo("Manche", "Manche pour les rouges")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
-    elif (((x1r1 == 725 and y2r1 == 75) and (x1r2 == 375 and y2r2 == 425) and (x1r3 == 25 and y2r3 == 775)) or ((x1r1 == 725 and y2r1 == 75)
-    and (x1r3 == 375 and y2r3 == 425) and (x1r2 == 25 and y2r2 == 775)) or ((x1r2 == 725 and y2r2 == 75) and (x1r1 == 375 and y2r1 == 425)
-    and (x1r3 == 25 and y2r3 == 775)) or ((x1r2 == 725 and y2r2 == 75) and (x1r3 == 375 and y2r3 == 425) and (x1r1 == 25 and y2r1 == 775))
-    or ((x1r3 == 725 and y2r3 == 75) and (x1r1 == 375 and y2r1 == 425) and (x1r2 == 25 and y2r2 == 775)) or ((x1r3 == 725 and y2r3 == 75)
-    and (x1r2 == 375 and y2r2 == 425) and (x1r1 == 25 and y2r1 == 775))):
+    elif (case3_couleure == case5_couleure and case5_couleure == case7_couleure and case7_couleure == 0):
         score_rouge += 1
         tk.messagebox.showinfo("Manche", "Manche pour les rouges")
         canvas.bind('<ButtonPress-1>', NouvelleManche)
