@@ -50,6 +50,7 @@ valeur_alea = 0
 pos_pionsR = []
 pionc1, pionc2, pionc3, pionc4, pionc5, pionc6, pionc7, pionc8, pionc9 = 0, 0, 0, 0, 0, 0, 0, 0, 0
 
+
 #FONCTIONS
 
 def joueur_vs_ia():
